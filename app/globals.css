@@ -1,0 +1,142 @@
+/*============================================================================*/
+/*! DESIGN TOKENS */
+/*============================================================================*/
+
+@import "tailwindcss";
+
+:root {
+  --background: #151619;
+  --foreground: #f5f5f6;
+
+  --surface: #202226;
+  --border: #41444b;
+
+  --silver: #b9bec7;
+  --silver-highlight: #e0e2e6;
+}
+
+/*============================================================================*/
+/*! TAILWIND THEME */
+/*============================================================================*/
+
+inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+
+  --color-silver: var(--silver);
+  --color-silver-highlight: var(--silver-highlight);
+
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+}
+
+/*============================================================================*/
+/*! GLOBAL RESET */
+/*============================================================================*/
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  margin: 0;
+  background-color: var(--background);
+  background-image: linear-gradient(
+    180deg,
+    #191a1e 0%,
+    #16171a 25%,
+    #151619 50%,
+    #17181b 75%,
+    #191a1e 100%
+  );
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*============================================================================*/
+/*! AMBIENT BREATHING EFFECT */
+/*============================================================================*/
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+
+  background:
+    radial-gradient(
+      ellipse 70% 600px at 15% 8%,
+      rgba(185, 190, 199, 0.075),
+      transparent 75%
+    ),
+    radial-gradient(
+      ellipse 65% 650px at 85% 45%,
+      rgba(185, 190, 199, 0.05),
+      transparent 75%
+    );
+
+  opacity: 0.35;
+  will-change: opacity;
+  animation: ambient-breathe 24s ease-in-out infinite alternate;
+}
+
+@keyframes ambient-breathe {
+  from {
+    opacity: 0.35;
+  }
+
+  to {
+    opacity: 0.55;
+  }
+}
+
+/*============================================================================*/
+/*! INTERACTION DEFAULTS */
+/*============================================================================*/
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--silver-highlight);
+  color: var(--background);
+}
+
+:focus-visible {
+  outline: 2px solid var(--silver-highlight);
+  outline-offset: 4px;
+}
+
+/*============================================================================*/
+/*! ACCESSIBILITY */
+/*============================================================================*/
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
