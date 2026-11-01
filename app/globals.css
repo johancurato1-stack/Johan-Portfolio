@@ -103,6 +103,44 @@ body::before {
 }
 
 /*============================================================================*/
+/*! CUSTOM SCROLLBAR */
+/*============================================================================*/
+
+.skills-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  scrollbar-gutter: stable;
+}
+
+.skills-scrollbar:hover {
+  scrollbar-color: #858991 transparent;
+}
+
+.skills-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.skills-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.skills-scrollbar::-webkit-scrollbar-thumb {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background-color: transparent;
+  background-clip: padding-box;
+  transition: background-color 300ms ease;
+}
+
+.skills-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: #858991;
+}
+
+.skills-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #b9bec7;
+}
+
+/*============================================================================*/
 /*! INTERACTION DEFAULTS */
 /*============================================================================*/
 
