@@ -2,6 +2,7 @@
  //! IMPORTS
 ============================================================================*/
 
+import IconContainer from "@/components/ui/IconContainer";
 import TechPill from "@/components/ui/TechPill";
 
 //============================================================================
@@ -73,9 +74,9 @@ function SkillIcon({ type }: { type: string }) {
 
       {type === "database" && (
         <>
-          <rect x="3" y="3" width="18" height="5" rx="1" fill="currentColor" />
-          <rect x="3" y="10" width="18" height="5" rx="1" fill="currentColor" />
-          <rect x="3" y="17" width="18" height="5" rx="1" fill="currentColor" />
+          <ellipse cx="12" cy="5" rx="8" ry="3" />
+          <path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5" />
+          <path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3" />
         </>
       )}
 
@@ -170,9 +171,9 @@ export default function SkillsSection() {
                 //! SKILL ICON
               ============================================================*/}
 
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-[#41444B] bg-[#151619] text-[#F5F5F6]">
+              <IconContainer size="md" className="text-[#F5F5F6]">
                 <SkillIcon type={skill.icon} />
-              </div>
+              </IconContainer>
 
               {/*============================================================
                 //! SKILL INFORMATION

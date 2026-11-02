@@ -2,6 +2,8 @@
  //! IMPORTS
 ============================================================================*/
 
+import IconContainer from "@/components/ui/IconContainer";
+
 import { experienceData, type Experience } from "./ExperienceData";
 
 //============================================================================
@@ -66,9 +68,9 @@ function ExperienceEntry({ experience }: { experience: Experience }) {
         //! EXPERIENCE ICON
       ====================================================================*/}
 
-      <div className="flex h-[52px] w-[52px] shrink-0 items-center justify-center rounded-md border border-[#41444B] bg-[#151619] text-[#F5F5F6]">
+      <IconContainer size="lg" radius="md" className="text-[#F5F5F6]">
         <ExperienceIcon type={experience.icon} />
-      </div>
+      </IconContainer>
 
       {/*====================================================================
         //! EXPERIENCE INFORMATION
@@ -110,7 +112,7 @@ export default function ExperienceTimeline() {
         //! TIMELINE LINE
       ====================================================================*/}
 
-      <div className="absolute top-5 bottom-5 left-[8px] w-px bg-[#858991]" />
+      <div className="absolute top-5 bottom-5 left-[7.5px] w-px bg-[#858991]" />
 
       {/*====================================================================
         //! EXPERIENCE ENTRIES

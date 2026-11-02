@@ -76,7 +76,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           href={project.href}
           className="mt-6 inline-flex items-center gap-2 text-xs font-medium text-[#B9BEC7] transition-colors duration-300 hover:text-[#F5F5F6]"
         >
-          Explore My Work
+          Learn More
           <span aria-hidden="true">↗</span>
         </Link>
       </div>

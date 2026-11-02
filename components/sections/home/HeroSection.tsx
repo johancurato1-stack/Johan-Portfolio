@@ -1,9 +1,11 @@
+"use client";
+
 /*============================================================================
  //! IMPORTS
 ============================================================================*/
 
 import Image from "next/image";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/MainButton";
 
 //============================================================================
 //! HERO SECTION
@@ -43,7 +45,17 @@ export default function HeroSection() {
           ==================================================================*/}
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button href="#projects" variant="primary">
+            <Button
+              href="#projects"
+              variant="primary"
+              onClick={() => {
+                window.dispatchEvent(
+                  new CustomEvent("portfolio:navigate", {
+                    detail: "projects",
+                  }),
+                );
+              }}
+            >
               Explore my Work
             </Button>
 
@@ -63,7 +75,7 @@ export default function HeroSection() {
 
         <div className="relative mx-auto flex h-[420px] w-full max-w-xl items-end justify-center sm:h-[520px] lg:h-[640px]">
           <Image
-            src="/images/Hero%20Profile.png"
+            src="/images/home/homeSection/Hero%20Profile.png"
             alt="Portrait of Johan Curato"
             width={1000}
             height={1200}

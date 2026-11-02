@@ -3,7 +3,7 @@
 ============================================================================*/
 
 import Image from "next/image";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/MainButton";
 import TechPill from "@/components/ui/TechPill";
 
 //============================================================================
@@ -62,12 +62,8 @@ export default function FeaturedSection() {
             ================================================================*/}
 
             <div className="mt-9">
-              <Button
-                href="https://github.com/johancurato1-stack/BH-Finder-First-Project-"
-                variant="primary"
-                external
-              >
-                View Project
+              <Button href="/projects/bh-finder" variant="primary">
+                Learn More
               </Button>
             </div>
           </div>
@@ -83,7 +79,7 @@ export default function FeaturedSection() {
 
             <div className="ml-auto w-[85%]">
               <Image
-                src="/images/BH%20Finder%20Dashboard%20Laptop%20Mockup.png"
+                src="/images/home/featuredSection/BH%20Finder%20Dashboard%20Laptop%20Mockup.png"
                 alt="BH Finder administrative dashboard displayed on a laptop"
                 width={1600}
                 height={1000}
@@ -98,7 +94,7 @@ export default function FeaturedSection() {
 
             <div className="absolute left-0 top-[55%] z-10 w-[34%] max-w-[230px] -translate-y-1/2">
               <Image
-                src="/images/BH%20Finder%20Mobile%20App%20Mockup.png"
+                src="/images/home/featuredSection/BH%20Finder%20Mobile%20App%20Mockup.png"
                 alt="BH Finder mobile application mockup"
                 width={700}
                 height={1200}

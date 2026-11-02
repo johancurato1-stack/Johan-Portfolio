@@ -2,6 +2,8 @@
  //! IMPORTS
 ============================================================================*/
 
+import IconContainer from "@/components/ui/IconContainer";
+
 //============================================================================
 //! SERVICES DATA
 //============================================================================
@@ -120,9 +122,9 @@ export default function ServicesSection() {
                 //! SERVICE ICON
               ================================================================*/}
 
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-[#41444B] bg-[#151619] text-[#B9BEC7]">
+              <IconContainer>
                 <ServiceIcon type={service.icon} />
-              </div>
+              </IconContainer>
 
               {/*================================================================
                 //! SERVICE CONTENT

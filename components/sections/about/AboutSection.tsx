@@ -3,7 +3,7 @@
 ============================================================================*/
 
 import Image from "next/image";
-import Button from "@/components/ui/Button";
+import Button from "@/components/ui/MainButton";
 
 //============================================================================
 //! ABOUT SECTION
@@ -66,7 +66,7 @@ export default function AboutSection() {
           ==================================================================*/}
 
           <div className="mt-8">
-            <Button href="#about" variant="primary">
+            <Button href="/about" variant="primary">
               More About Me
             </Button>
           </div>
@@ -84,7 +84,7 @@ export default function AboutSection() {
 
             <div className="overflow-hidden rounded-lg">
               <Image
-                src="/images/About%20Picture.png"
+                src="/images/about/aboutSection/About%20Picture.png"
                 alt="Johan Curato playing guitar"
                 width={544}
                 height={756}
