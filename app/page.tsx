@@ -5,17 +5,18 @@
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 
-import HeroSection from "../components/sections/home/HeroSection";
-import ServicesSection from "../components/sections/home/ServicesSection";
-import FeaturedSection from "../components/sections/home/FeaturedSection";
+import HeroSection from "../components/sections/home/homeSection/HeroSection";
+import ServicesSection from "../components/sections/home/servicesSection/ServicesSection";
+import FeaturedSection from "../components/sections/home/featuredSection/FeaturedSection";
 
-import AboutSection from "../components/sections/about/AboutSection";
-import SkillsSection from "../components/sections/about/SkillsSection";
+import AboutSection from "../components/sections/about/aboutSection/AboutSection";
+import SkillsSection from "../components/sections/about/skillsSection/SkillsSection";
 
-import ExperienceSection from "../components/sections/experience/ExperienceSection";
-import ProjectSection from "../components/sections/projects/ProjectSection";
+import ExperienceSection from "../components/sections/experience/experienceSection/ExperienceSection";
+import ProjectSection from "../components/sections/projects/projectsSection/ProjectSection";
 
-import ContactSection from "../components/sections/contact/ContactSection";
+import ContactSection from "../components/sections/contact/contactSection/ContactSection";
+import FAQSection from "../components/sections/faq/faqSection/FAQSection";
 
 //============================================================================
 //! HOME PAGE
@@ -62,6 +63,12 @@ export default function Home() {
       ======================================================================*/}
 
       <ContactSection />
+
+      {/*======================================================================
+        //! FAQ SECTION
+      ======================================================================*/}
+
+      <FAQSection />
 
       {/*======================================================================
         //! FOOTER

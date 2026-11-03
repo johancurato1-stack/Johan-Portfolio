@@ -2,49 +2,14 @@
  //! IMPORTS
 ============================================================================*/
 
+"use client";
+
+import { useRef } from "react";
+
 import IconContainer from "@/components/ui/IconContainer";
 import TechPill from "@/components/ui/TechPill";
-
-//============================================================================
-//! SKILLS DATA
-//============================================================================
-
-const skills = [
-  {
-    icon: "mobile",
-    title: "Mobile Development",
-    description:
-      "Building cross-platform mobile applications with clean and intuitive user interfaces.",
-    technologies: ["Flutter", "Dart", "Provider"],
-  },
-  {
-    icon: "database",
-    title: "Backend & Data",
-    description:
-      "Integrating and managing application data with scalable and reliable solutions.",
-    technologies: ["Supabase", "SQL", "PostgreSQL", "RLS"],
-  },
-  {
-    icon: "code",
-    title: "Web Development",
-    description:
-      "Building modern web applications and responsive user interfaces.",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-  },
-  {
-    icon: "tools",
-    title: "Tools & Others",
-    description: "Tools that support my development workflow.",
-    technologies: ["Git", "GitHub", "VS Code", "Figma"],
-  },
-  {
-    icon: "ai",
-    title: "AI & Productivity",
-    description:
-      "Leveraging AI-powered tools to support research, technical problem-solving, code exploration, and development workflows.",
-    technologies: ["ChatGPT", "Claude"],
-  },
-];
+import { skills } from "./SkillsData";
+import useScrollAnimation from "@/components/hooks/useScrollAnimation";
 
 //============================================================================
 //! SKILL ICON
@@ -116,6 +81,20 @@ function SkillIcon({ type }: { type: string }) {
 //============================================================================
 
 export default function SkillsSection() {
+  const labelRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const descriptionRef = useRef<HTMLParagraphElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  //============================================================================
+  //! SCROLL ANIMATIONS
+  //============================================================================
+
+  useScrollAnimation(labelRef, 0);
+  useScrollAnimation(headingRef, 120);
+  useScrollAnimation(descriptionRef, 250);
+  useScrollAnimation(cardsRef, 150, 120);
+
   return (
     <section id="skills" className="relative">
       <div className="mx-auto max-w-7xl px-6 pt-4 pb-16 sm:px-10 lg:px-12 lg:pt-8 lg:pb-20">
@@ -129,7 +108,7 @@ export default function SkillsSection() {
           ==================================================================*/}
 
           <div>
-            <div className="mb-7 flex items-center gap-3">
+            <div ref={labelRef} className="mb-7 flex items-center gap-3">
               <span className="h-2 w-2 rounded-full border border-[#B9BEC7]" />
 
               <p className="text-[10px] font-medium tracking-[0.2em] text-[#858991]">
@@ -137,7 +116,10 @@ export default function SkillsSection() {
               </p>
             </div>
 
-            <h2 className="max-w-lg text-3xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-4xl">
+            <h2
+              ref={headingRef}
+              className="max-w-lg text-3xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-4xl"
+            >
               Technical <span className="text-[#F5F5F6]">skills</span>
               <span className="block">
                 that I use to <span className="text-[#F5F5F6]">build</span>
@@ -150,7 +132,10 @@ export default function SkillsSection() {
             //! SECTION DESCRIPTION
           ==================================================================*/}
 
-          <p className="max-w-md text-sm leading-7 text-[#858991] lg:ml-auto">
+          <p
+            ref={descriptionRef}
+            className="max-w-md text-sm leading-7 text-[#858991] lg:ml-auto"
+          >
             A growing set of tools and technologies that help me turn ideas into
             practical applications. I&apos;m continuously learning and exploring
             new technologies.
@@ -161,10 +146,11 @@ export default function SkillsSection() {
           //! SKILL CARDS
         ====================================================================*/}
 
-        <div className="mt-8 space-y-3">
+        <div ref={cardsRef} className="mt-8 space-y-3">
           {skills.map((skill) => (
             <article
               key={skill.title}
+              data-scroll-animation-item
               className="group flex min-h-[120px] flex-col gap-5 rounded-xl border border-[#41444B]/80 bg-[#202226]/60 p-5 transition-colors duration-300 hover:border-[#858991] sm:flex-row sm:items-center sm:gap-6"
             >
               {/*============================================================

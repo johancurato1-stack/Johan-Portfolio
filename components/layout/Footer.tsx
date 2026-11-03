@@ -1,44 +1,229 @@
+"use client";
+
 /*============================================================================
  //! IMPORTS
 ============================================================================*/
+
+import { useRef } from "react";
+
+import useScrollAnimation from "@/components/hooks/useScrollAnimation";
+
+//============================================================================
+//! FOOTER DATA
+//============================================================================
+
+const discoverLinks = [
+  { label: "Home", id: "home" },
+  { label: "About", id: "about" },
+  { label: "Experience", id: "experience" },
+  { label: "Projects", id: "projects" },
+  { label: "Contact", id: "contact" },
+];
+
+const socialLinks = [
+  {
+    label: "GitHub",
+    href: "https://github.com/johancurato1-stack",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/johan-curato-696a80361/",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/hnsey.brv/",
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/johancurato1",
+  },
+];
+
+const rightsLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Terms of Service", href: "/terms-of-service" },
+];
 
 //============================================================================
 //! FOOTER
 //============================================================================
 
 export default function Footer() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  //============================================================================
+  //! SCROLL ANIMATIONS
+  //============================================================================
+
+  useScrollAnimation(contentRef, 0, 120);
+  useScrollAnimation(bottomRef, 200);
+
+  //============================================================================
+  //! NAVIGATION HANDLER
+  //============================================================================
+
+  const handleNavigation = (sectionId: string) => {
+    window.dispatchEvent(
+      new CustomEvent("portfolio:navigate", {
+        detail: sectionId,
+      }),
+    );
+  };
+
   return (
-    <footer className="border-t border-[#41444B]/60">
-      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-7 text-xs text-[#858991] sm:flex-row sm:items-center sm:justify-between sm:px-10 lg:px-12">
+    <footer className="bg-[#111214]">
+      <div className="mx-auto max-w-7xl px-6 pt-12 pb-7 sm:px-10 lg:px-12 lg:pt-16">
         {/*====================================================================
-          //! LOGO
+          //! FOOTER CONTENT
         ====================================================================*/}
 
-        <a
-          href="#home"
-          className="font-semibold tracking-[0.15em] text-[#B9BEC7]"
+        <div
+          ref={contentRef}
+          className="grid grid-cols-2 justify-items-center gap-8 sm:grid-cols-4 sm:gap-8"
         >
-          JC.
-        </a>
+          {/*==================================================================
+            //! DISCOVER
+          ==================================================================*/}
+
+          <div data-scroll-animation-item>
+            <h3 className="text-xs font-semibold tracking-[0.12em] text-[#858991]">
+              DISCOVER
+            </h3>
+
+            <ul className="mt-4 space-y-2.5">
+              {discoverLinks.map((link) => (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleNavigation(link.id);
+                    }}
+                    className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#E0E2E6]"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/*==================================================================
+            //! FOLLOW ME
+          ==================================================================*/}
+
+          <div data-scroll-animation-item>
+            <h3 className="text-xs font-semibold tracking-[0.12em] text-[#858991]">
+              FOLLOW ME
+            </h3>
+
+            <ul className="mt-4 space-y-2.5">
+              {socialLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#E0E2E6]"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/*==================================================================
+            //! YOUR RIGHTS
+          ==================================================================*/}
+
+          <div data-scroll-animation-item>
+            <h3 className="text-xs font-semibold tracking-[0.12em] text-[#858991]">
+              YOUR RIGHTS
+            </h3>
+
+            <ul className="mt-4 space-y-2.5">
+              {rightsLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#E0E2E6]"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/*==================================================================
+            //! CONTACT
+          ==================================================================*/}
+
+          <div data-scroll-animation-item>
+            <h3 className="text-xs font-semibold tracking-[0.12em] text-[#858991]">
+              CONTACT
+            </h3>
+
+            <ul className="mt-4 space-y-2.5">
+              <li>
+                <a
+                  href="#contact"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    handleNavigation("contact");
+                  }}
+                  className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#E0E2E6]"
+                >
+                  Email
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
 
         {/*====================================================================
-          //! COPYRIGHT
+          //! FOOTER BOTTOM
         ====================================================================*/}
 
-        <p>© 2026 Johan Curato. Built with care.</p>
-
-        {/*====================================================================
-          //! SOCIAL LINKS
-        ====================================================================*/}
-
-        <a
-          href="https://github.com/johancurato1-stack"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="transition-colors hover:text-[#E0E2E6]"
+        <div
+          ref={bottomRef}
+          className="mt-12 flex items-center justify-between gap-6"
         >
-          GitHub <span aria-hidden="true">↗</span>
-        </a>
+          {/*==================================================================
+            //! COPYRIGHT
+          ==================================================================*/}
+
+          <p className="text-xs text-[#858991]">
+            © 2026 Johan Curato. All rights reserved.
+          </p>
+
+          {/*==================================================================
+            //! BACK TO TOP
+          ==================================================================*/}
+
+          <button
+            type="button"
+            onClick={() => handleNavigation("home")}
+            aria-label="Back to top"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#41444B] text-[#B9BEC7] transition-colors duration-300 hover:border-[#858991] hover:text-[#F5F5F6]"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m18 15-6-6-6 6" />
+            </svg>
+          </button>
+        </div>
       </div>
     </footer>
   );

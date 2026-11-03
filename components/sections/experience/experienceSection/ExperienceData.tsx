@@ -62,3 +62,22 @@ export const experienceData: Experience[] = [
     icon: "code",
   },
 ];
+
+//============================================================================
+//! EXPERIENCE STATISTICS
+//============================================================================
+
+export const experienceStatistics = [
+  {
+    value: "1+",
+    label: "Major Projects",
+  },
+  {
+    value: "3+",
+    label: "Years of Learning",
+  },
+  {
+    value: "5+",
+    label: "Core Technologies",
+  },
+];

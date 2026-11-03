@@ -153,6 +153,7 @@ export default function Navbar() {
           ==================================================================*/}
 
           <a
+            id="navbar-logo"
             href="#home"
             aria-label="Johan Curato - Home"
             onClick={(event) => {

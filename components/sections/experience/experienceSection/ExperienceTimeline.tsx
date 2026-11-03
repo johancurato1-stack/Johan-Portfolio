@@ -57,7 +57,10 @@ function ExperienceIcon({ type }: { type: Experience["icon"] }) {
 
 function ExperienceEntry({ experience }: { experience: Experience }) {
   return (
-    <article className="relative grid min-h-[112px] grid-cols-[52px_minmax(0,1fr)] items-center gap-x-6 border-b border-[#41444B]/50 py-5 sm:min-h-[120px] sm:grid-cols-[52px_minmax(0,1fr)] sm:gap-x-7 lg:grid-cols-[52px_minmax(0,1fr)_minmax(180px,0.55fr)] lg:gap-x-9">
+    <article
+      data-scroll-animation-item
+      className="relative grid min-h-[112px] grid-cols-[52px_minmax(0,1fr)] items-center gap-x-6 border-b border-[#41444B]/50 py-5 sm:min-h-[120px] sm:grid-cols-[52px_minmax(0,1fr)] sm:gap-x-7 lg:grid-cols-[52px_minmax(0,1fr)_minmax(180px,0.55fr)] lg:gap-x-9"
+    >
       {/*====================================================================
         //! TIMELINE MARKER
       ====================================================================*/}

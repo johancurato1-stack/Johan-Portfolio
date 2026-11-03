@@ -1,36 +1,15 @@
+"use client";
+
 /*============================================================================
  //! IMPORTS
 ============================================================================*/
 
+import { useRef } from "react";
+
 import IconContainer from "@/components/ui/IconContainer";
+import useScrollAnimation from "@/components/hooks/useScrollAnimation";
 
-//============================================================================
-//! SERVICES DATA
-//============================================================================
-
-const services = [
-  {
-    icon: "mobile",
-    title: "Mobile App Development",
-    description:
-      "Building practical mobile applications with clean interfaces and intuitive user experiences.",
-    href: "/services/mobile-app-development",
-  },
-  {
-    icon: "database",
-    title: "Backend & Data",
-    description:
-      "Integrating applications with reliable databases, authentication systems, and backend services.",
-    href: "/services/backend-and-data",
-  },
-  {
-    icon: "code",
-    title: "Web Development",
-    description:
-      "Building modern, responsive web applications with thoughtful layouts and maintainable code.",
-    href: "/services/web-development",
-  },
-];
+import { services } from "./ServicesData";
 
 //============================================================================
 //! SERVICE ICON
@@ -82,6 +61,16 @@ function ServiceIcon({ type }: { type: string }) {
 //============================================================================
 
 export default function ServicesSection() {
+  const introductionRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  //============================================================================
+  //! SCROLL ANIMATIONS
+  //============================================================================
+
+  useScrollAnimation(introductionRef, 0);
+  useScrollAnimation(cardsRef, 150, 120);
+
   return (
     <section id="services">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 -mt-3 pb-16 sm:px-10 lg:grid-cols-[0.75fr_1.75fr] lg:items-center lg:gap-12 lg:px-12 lg:pb-20">
@@ -89,7 +78,7 @@ export default function ServicesSection() {
           //! SECTION INTRODUCTION
         ====================================================================*/}
 
-        <div>
+        <div ref={introductionRef}>
           <div className="mb-5 flex items-center gap-3">
             <span className="h-2 w-2 rounded-full border border-[#B9BEC7]" />
 
@@ -112,10 +101,14 @@ export default function ServicesSection() {
           //! SERVICE CARDS
         ====================================================================*/}
 
-        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div
+          ref={cardsRef}
+          className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
+        >
           {services.map((service) => (
             <article
               key={service.title}
+              data-scroll-animation-item
               className="group flex min-h-[270px] flex-col rounded-xl border border-[#41444B]/80 bg-[#202226]/60 p-5 transition-colors duration-300 hover:border-[#858991]"
             >
               {/*================================================================

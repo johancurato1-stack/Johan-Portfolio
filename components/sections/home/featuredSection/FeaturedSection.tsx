@@ -1,16 +1,31 @@
+"use client";
+
 /*============================================================================
  //! IMPORTS
 ============================================================================*/
 
 import Image from "next/image";
+import { useRef } from "react";
+
 import Button from "@/components/ui/MainButton";
 import TechPill from "@/components/ui/TechPill";
+import useScrollAnimation from "@/components/hooks/useScrollAnimation";
 
 //============================================================================
 //! FEATURED SECTION
 //============================================================================
 
 export default function FeaturedSection() {
+  const projectInfoRef = useRef<HTMLDivElement>(null);
+  const mockupsRef = useRef<HTMLDivElement>(null);
+
+  //============================================================================
+  //! SCROLL ANIMATIONS
+  //============================================================================
+
+  useScrollAnimation(projectInfoRef, 0);
+  useScrollAnimation(mockupsRef, 150, 180);
+
   return (
     <section
       id="featured-project"
@@ -26,7 +41,7 @@ export default function FeaturedSection() {
             //! PROJECT INFORMATION
           ==================================================================*/}
 
-          <div>
+          <div ref={projectInfoRef}>
             <div className="mb-6 flex items-center gap-3">
               <span className="h-2 w-2 rounded-full border border-[#B9BEC7]" />
 
@@ -72,13 +87,17 @@ export default function FeaturedSection() {
             //! PROJECT MOCKUPS
           ==================================================================*/}
 
-          <div className="relative mx-auto flex min-h-[340px] w-full max-w-2xl items-center justify-center sm:min-h-[440px]">
+          <div
+            ref={mockupsRef}
+            className="relative mx-auto flex min-h-[340px] w-full max-w-2xl items-center justify-center sm:min-h-[440px]"
+          >
             {/*================================================================
               //! DASHBOARD LAPTOP MOCKUP
             ================================================================*/}
 
             <div className="ml-auto w-[85%]">
               <Image
+                data-scroll-animation-item
                 src="/images/home/featuredSection/BH%20Finder%20Dashboard%20Laptop%20Mockup.png"
                 alt="BH Finder administrative dashboard displayed on a laptop"
                 width={1600}
@@ -94,6 +113,7 @@ export default function FeaturedSection() {
 
             <div className="absolute left-0 top-[55%] z-10 w-[34%] max-w-[230px] -translate-y-1/2">
               <Image
+                data-scroll-animation-item
                 src="/images/home/featuredSection/BH%20Finder%20Mobile%20App%20Mockup.png"
                 alt="BH Finder mobile application mockup"
                 width={700}

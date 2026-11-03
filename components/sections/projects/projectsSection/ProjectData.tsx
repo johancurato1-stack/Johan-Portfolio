@@ -6,18 +6,35 @@
 //! PROJECT TYPES
 //============================================================================
 
+export type ProjectCategory =
+  "Mobile" | "Web" | "Full-stack" | "Backend" | "UI/UX" | "Other";
+
+export type ProjectFilter = "All" | ProjectCategory;
+
 export interface Project {
   id: number;
   title: string;
   description: string;
   image: string;
-  categories: (
-    "Mobile" | "Web" | "Full-stack" | "Backend" | "UI/UX" | "Other"
-  )[];
+  categories: ProjectCategory[];
   technologies: string[];
   href: string;
   featured?: boolean;
 }
+
+//============================================================================
+//! PROJECT FILTERS
+//============================================================================
+
+export const projectFilters: ProjectFilter[] = [
+  "All",
+  "Mobile",
+  "Web",
+  "Full-stack",
+  "Backend",
+  "UI/UX",
+  "Other",
+];
 
 //============================================================================
 //! PROJECT ENTRIES
