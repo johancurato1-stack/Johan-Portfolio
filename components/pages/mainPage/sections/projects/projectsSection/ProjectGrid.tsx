@@ -2,9 +2,9 @@
  //! IMPORTS
 ============================================================================*/
 
-import ProjectCard from "../projectsSection/ProjectCard";
+import ProjectCard from "./ProjectCard";
 import EmptyProjectCard from "./ProjectCardEmpty";
-import type { Project } from "../projectsSection/ProjectData";
+import type { Project } from "./ProjectData";
 
 //============================================================================
 //! PROPS

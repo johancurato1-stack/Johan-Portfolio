@@ -26,9 +26,24 @@ export default function FeaturedSection() {
   useScrollAnimation(projectInfoRef, 0);
   useScrollAnimation(mockupsRef, 150, 180);
 
+  //============================================================================
+  //! TRACK BH FINDER ENTRY
+  //============================================================================
+
+  const handleProjectNavigation = (event: React.MouseEvent<HTMLElement>) => {
+    if (!(event.target instanceof Element)) return;
+
+    const link = event.target.closest("a");
+
+    if (link?.pathname === "/projects/bh-finder") {
+      sessionStorage.setItem("bh-finder-entry", "true");
+    }
+  };
+
   return (
     <section
       id="featured-project"
+      onClick={handleProjectNavigation}
       className="border-y border-[#41444B] bg-[#111214] px-6 py-6 sm:px-10 lg:px-12 lg:py-8"
     >
       <div className="mx-auto max-w-7xl">

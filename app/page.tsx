@@ -2,21 +2,21 @@
  //! IMPORTS
 ============================================================================*/
 
-import Navbar from "../components/layout/Navbar";
+import Navbar from "../components/layout/navbar/main/MainNavbar";
 import Footer from "../components/layout/Footer";
 
-import HeroSection from "../components/sections/home/homeSection/HeroSection";
-import ServicesSection from "../components/sections/home/servicesSection/ServicesSection";
-import FeaturedSection from "../components/sections/home/featuredSection/FeaturedSection";
+import HeroSection from "../components/pages/mainPage/sections/home/homeSection/HeroSection";
+import ServicesSection from "../components/pages/mainPage/sections/home/servicesSection/ServicesSection";
+import FeaturedSection from "../components/pages/mainPage/sections/home/featuredSection/FeaturedSection";
 
-import AboutSection from "../components/sections/about/aboutSection/AboutSection";
-import SkillsSection from "../components/sections/about/skillsSection/SkillsSection";
+import AboutSection from "../components/pages/mainPage/sections/about/aboutSection/AboutSection";
+import SkillsSection from "../components/pages/mainPage/sections/about/skillsSection/SkillsSection";
 
-import ExperienceSection from "../components/sections/experience/experienceSection/ExperienceSection";
-import ProjectSection from "../components/sections/projects/projectsSection/ProjectSection";
+import ExperienceSection from "../components/pages/mainPage/sections/experience/experienceSection/ExperienceSection";
+import ProjectSection from "../components/pages/mainPage/sections/projects/projectsSection/ProjectSection";
 
-import ContactSection from "../components/sections/contact/contactSection/ContactSection";
-import FAQSection from "../components/sections/faq/faqSection/FAQSection";
+import ContactSection from "../components/pages/mainPage/sections/contact/contactSection/ContactSection";
+import FAQSection from "../components/pages/mainPage/sections/faq/faqSection/FAQSection";
 
 //============================================================================
 //! HOME PAGE
@@ -40,32 +40,32 @@ export default function Home() {
       <FeaturedSection />
 
       {/*======================================================================
-        //! ABOUT SECTION
+        //! ABOUT SECTIONS
       ======================================================================*/}
 
       <AboutSection />
       <SkillsSection />
 
       {/*======================================================================
-        //! EXPERIENCE SECTION
+        //! EXPERIENCE SECTIONS
       ======================================================================*/}
 
       <ExperienceSection />
 
       {/*======================================================================
-        //! PROJECTS SECTION
+        //! PROJECTS SECTIONS
       ======================================================================*/}
 
       <ProjectSection />
 
       {/*======================================================================
-        //! CONTACT SECTION
+        //! CONTACT SECTIONS
       ======================================================================*/}
 
       <ContactSection />
 
       {/*======================================================================
-        //! FAQ SECTION
+        //! FAQ SECTIONS
       ======================================================================*/}
 
       <FAQSection />

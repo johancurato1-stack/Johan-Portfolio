@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, type MouseEvent } from "react";
 
 import FilterButton from "@/components/ui/FilterButton";
 import useScrollAnimation from "@/components/hooks/useScrollAnimation";
@@ -15,7 +15,7 @@ import {
   projectFilters,
   type ProjectCategory,
   type ProjectFilter,
-} from "../projectsSection/ProjectData";
+} from "./ProjectData";
 
 //============================================================================
 //! PROJECTS SECTION
@@ -41,6 +41,20 @@ export default function ProjectsSection() {
   useScrollAnimation(gridRef, 200);
 
   //============================================================================
+  //! TRACK BH FINDER ENTRY
+  //============================================================================
+
+  const handleProjectNavigation = (event: MouseEvent<HTMLElement>) => {
+    if (!(event.target instanceof Element)) return;
+
+    const link = event.target.closest("a");
+
+    if (link?.pathname === "/projects/bh-finder") {
+      sessionStorage.setItem("bh-finder-entry", "true");
+    }
+  };
+
+  //============================================================================
   //! FILTERED PROJECTS
   //============================================================================
 
@@ -52,7 +66,11 @@ export default function ProjectsSection() {
         );
 
   return (
-    <section id="projects" className="relative">
+    <section
+      id="projects"
+      onClick={handleProjectNavigation}
+      className="relative"
+    >
       <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-12 lg:py-20">
         {/*====================================================================
           //! SECTION INTRODUCTION
