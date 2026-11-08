@@ -1,3 +1,5 @@
+"use client";
+
 /*============================================================================
  //! IMPORTS
 ============================================================================*/
@@ -6,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import TechPill from "@/components/ui/TechPill";
-import type { Project } from "./ProjectData";
+import type { Project } from "../ProjectData";
 
 //============================================================================
 //! PROPS

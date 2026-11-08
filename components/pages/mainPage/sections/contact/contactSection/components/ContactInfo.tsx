@@ -5,7 +5,7 @@
 import IconContainer from "@/components/ui/IconContainer";
 
 import ContactIcon from "./ContactIcon";
-import { contactDetails, socialLinks } from "./ContactData";
+import { contactDetails, socialLinks } from "../ContactData";
 
 //============================================================================
 //! CONTACT INFO

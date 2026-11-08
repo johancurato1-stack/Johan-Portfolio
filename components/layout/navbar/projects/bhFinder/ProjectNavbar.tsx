@@ -5,7 +5,7 @@
 ============================================================================*/
 
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 //============================================================================
@@ -26,11 +26,36 @@ const navLinks = [
   },
   {
     label: "Engineering",
-    href: "#database-design",
-    id: "database-design",
+    href: "#challenges-solutions",
+    id: "challenges-solutions",
   },
-  { label: "Roadmap", href: "#scalability", id: "scalability" },
+  {
+    label: "Conclusion",
+    href: "#conclusion",
+    id: "conclusion",
+  },
 ];
+
+//============================================================================
+//! NAVIGATION SCROLL OFFSETS
+//============================================================================
+
+const sectionOffsets: Record<string, number> = {
+  "project-overview": 88,
+  "product-experience": 3,
+  "system-architecture": 3,
+  "challenges-solutions": 52,
+  conclusion: 88,
+};
+
+//============================================================================
+//! NAVIGATION RETURN LOCATION
+//============================================================================
+
+interface ReturnLocation {
+  pathname: string;
+  scrollY: number;
+}
 
 //============================================================================
 //! NAVBAR
@@ -40,53 +65,69 @@ export default function ProjectNavbar() {
   const router = useRouter();
 
   const [activeSection, setActiveSection] = useState("project-overview");
-  const [hasEntryPoint, setHasEntryPoint] = useState(false);
+
+  const isNavigating = useRef(false);
+  const navigationTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   //============================================================================
-  //! CHECK PREVIOUS ENTRY POINT
+  //! HOME NAVIGATION HANDLER
   //============================================================================
 
-  useEffect(() => {
-    const entryPoint = sessionStorage.getItem("bh-finder-entry");
-
-    if (entryPoint === "true") {
-      setHasEntryPoint(true);
-      sessionStorage.removeItem("bh-finder-entry");
-    }
-  }, []);
+  const handleHomeNavigation = useCallback(() => {
+    router.push("/");
+  }, [router]);
 
   //============================================================================
-  //! BACK NAVIGATION HANDLER
+  //! SMART BACK NAVIGATION HANDLER
   //============================================================================
 
   const handleBackNavigation = useCallback(() => {
-    if (hasEntryPoint) {
-      router.back();
-      return;
+    const savedLocation = sessionStorage.getItem("portfolio:return-location");
+
+    if (savedLocation) {
+      try {
+        const returnLocation = JSON.parse(savedLocation) as ReturnLocation;
+
+        const isValidPath =
+          typeof returnLocation.pathname === "string" &&
+          returnLocation.pathname.startsWith("/") &&
+          !returnLocation.pathname.startsWith("//") &&
+          !returnLocation.pathname.startsWith("/projects/bh-finder");
+
+        const isValidScrollPosition =
+          typeof returnLocation.scrollY === "number" &&
+          Number.isFinite(returnLocation.scrollY) &&
+          returnLocation.scrollY >= 0;
+
+        if (isValidPath && isValidScrollPosition) {
+          sessionStorage.removeItem("portfolio:return-location");
+
+          sessionStorage.setItem(
+            "portfolio:pending-scroll",
+            String(returnLocation.scrollY),
+          );
+
+          sessionStorage.removeItem("portfolio:pending-navigation");
+
+          router.push(returnLocation.pathname);
+          return;
+        }
+      } catch {
+        sessionStorage.removeItem("portfolio:return-location");
+      }
     }
 
+    //============================================================================
+    //! FALLBACK NAVIGATION
+    //============================================================================
+
+    sessionStorage.removeItem("portfolio:return-location");
+    sessionStorage.removeItem("portfolio:pending-scroll");
+
+    sessionStorage.setItem("portfolio:pending-navigation", "projects");
+
     router.push("/");
-  }, [hasEntryPoint, router]);
-
-  //============================================================================
-  //! NAVIGATION HANDLER
-  //============================================================================
-
-  const handleNavigation = useCallback((sectionId: string) => {
-    const section = document.getElementById(sectionId);
-
-    if (!section) return;
-
-    const targetPosition =
-      section.getBoundingClientRect().top + window.scrollY - 88;
-
-    window.scrollTo({
-      top: Math.max(0, targetPosition),
-      behavior: "smooth",
-    });
-
-    setActiveSection(sectionId);
-  }, []);
+  }, [router]);
 
   //============================================================================
   //! UPDATE ACTIVE SECTION
@@ -100,7 +141,7 @@ export default function ProjectNavbar() {
       document.documentElement.scrollHeight - 2;
 
     if (pageBottom) {
-      setActiveSection("scalability");
+      setActiveSection("conclusion");
       return;
     }
 
@@ -121,24 +162,110 @@ export default function ProjectNavbar() {
   }, []);
 
   //============================================================================
+  //! NAVIGATION HANDLER
+  //============================================================================
+
+  const handleNavigation = useCallback(
+    (sectionId: string) => {
+      const section = document.getElementById(sectionId);
+
+      if (!section) return;
+
+      if (navigationTimer.current) {
+        clearTimeout(navigationTimer.current);
+        navigationTimer.current = null;
+      }
+
+      isNavigating.current = true;
+      setActiveSection(sectionId);
+
+      const targetPosition =
+        section.getBoundingClientRect().top +
+        window.scrollY -
+        (sectionOffsets[sectionId] ?? 88);
+
+      const destination = Math.max(0, targetPosition);
+
+      if (Math.abs(window.scrollY - destination) < 2) {
+        isNavigating.current = false;
+        updateActiveSection();
+        return;
+      }
+
+      window.scrollTo({
+        top: destination,
+        behavior: "smooth",
+      });
+    },
+    [updateActiveSection],
+  );
+
+  //============================================================================
+  //! NAVIGATION COMPLETION
+  //============================================================================
+
+  const finishNavigation = useCallback(() => {
+    if (navigationTimer.current) {
+      clearTimeout(navigationTimer.current);
+      navigationTimer.current = null;
+    }
+
+    isNavigating.current = false;
+    updateActiveSection();
+  }, [updateActiveSection]);
+
+  //============================================================================
   //! SCROLL-AWARE NAVIGATION
   //============================================================================
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (!isNavigating.current) {
+        updateActiveSection();
+        return;
+      }
+
+      if (navigationTimer.current) {
+        clearTimeout(navigationTimer.current);
+      }
+
+      navigationTimer.current = setTimeout(() => {
+        finishNavigation();
+      }, 200);
+    };
+
+    const handleScrollEnd = () => {
+      if (isNavigating.current) {
+        finishNavigation();
+      } else {
+        updateActiveSection();
+      }
+    };
+
     updateActiveSection();
 
-    window.addEventListener("scroll", updateActiveSection, {
+    window.addEventListener("scroll", handleScroll, {
       passive: true,
     });
 
+    window.addEventListener("scrollend", handleScrollEnd);
+
     return () => {
-      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scrollend", handleScrollEnd);
+
+      if (navigationTimer.current) {
+        clearTimeout(navigationTimer.current);
+      }
     };
-  }, [updateActiveSection]);
+  }, [finishNavigation, updateActiveSection]);
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 bg-transparent">
+      <header
+        style={{ viewTransitionName: "portfolio-navbar" }}
+        className="fixed inset-x-0 top-0 z-50 bg-transparent"
+      >
         {/*==================================================================
           //! NAVBAR GRADIENT
         ==================================================================*/}
@@ -155,8 +282,12 @@ export default function ProjectNavbar() {
 
           <a
             id="navbar-logo"
-            href="/#home"
+            href="/"
             aria-label="Johan Curato - Home"
+            onClick={(event) => {
+              event.preventDefault();
+              handleHomeNavigation();
+            }}
             className="relative flex h-14 w-16 shrink-0 items-center justify-center"
           >
             <Image

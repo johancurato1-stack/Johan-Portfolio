@@ -30,7 +30,7 @@ export default function BackendSecuritySection() {
   return (
     <section
       id="backend-security"
-      className="relative px-6 pt-0 pb-10 sm:px-10 sm:pt-2 lg:px-12 lg:pt-7 lg:pb-12"
+      className="relative px-6 pt-0 pb-10 sm:px-10 sm:pt-2 lg:px-12 lg:pt-7 lg:pb-16"
     >
       <div className="mx-auto max-w-7xl">
         {/* SECTION INTRODUCTION */}

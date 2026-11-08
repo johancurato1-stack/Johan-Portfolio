@@ -9,7 +9,7 @@ import { useRef, useState, type MouseEvent } from "react";
 import FilterButton from "@/components/ui/FilterButton";
 import useScrollAnimation from "@/components/hooks/useScrollAnimation";
 
-import ProjectGrid from "./ProjectGrid";
+import ProjectGrid from "./components/ProjectGrid";
 import {
   projectData,
   projectFilters,

@@ -6,7 +6,7 @@
 
 import { useRef } from "react";
 
-import ExperienceTimeline from "./ExperienceTimeline";
+import ExperienceTimeline from "./components/ExperienceTimeline";
 import { experienceStatistics } from "./ExperienceData";
 
 import useScrollAnimation from "@/components/hooks/useScrollAnimation";

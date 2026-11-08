@@ -35,7 +35,7 @@ export default function Button({
   onClick,
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center gap-3 rounded-md px-5 py-3 text-xs font-medium transition-colors duration-300";
+    "inline-flex cursor-pointer items-center gap-3 rounded-md px-5 py-3 text-xs font-medium transition-colors duration-300";
 
   const variants = {
     primary: "bg-[#E0E2E6] !text-[#151619] hover:bg-white",

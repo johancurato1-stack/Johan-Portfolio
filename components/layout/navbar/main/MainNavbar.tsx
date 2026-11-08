@@ -6,6 +6,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 
 //============================================================================
 //! NAVIGATION LINKS
@@ -35,7 +36,10 @@ const scrollOffsets: Record<string, number> = {
 //============================================================================
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   const [activeSection, setActiveSection] = useState("home");
+
   const isNavigating = useRef(false);
 
   //============================================================================
@@ -57,6 +61,44 @@ export default function Navbar() {
 
     window.scrollTo({
       top: Math.max(0, targetPosition),
+      behavior: "smooth",
+    });
+  }, []);
+
+  //============================================================================
+  //! PENDING SECTION NAVIGATION HANDLER
+  //============================================================================
+
+  const handlePendingNavigation = useCallback((sectionId: string) => {
+    const section = document.getElementById(sectionId);
+
+    if (!section || !(sectionId in scrollOffsets)) return;
+
+    const targetPosition =
+      section.getBoundingClientRect().top +
+      window.scrollY -
+      scrollOffsets[sectionId];
+
+    isNavigating.current = true;
+    setActiveSection(sectionId);
+
+    window.scrollTo({
+      top: Math.max(0, targetPosition),
+      behavior: "smooth",
+    });
+  }, []);
+
+  //============================================================================
+  //! PENDING SCROLL RESTORATION HANDLER
+  //============================================================================
+
+  const handlePendingScroll = useCallback((scrollPosition: number) => {
+    if (!Number.isFinite(scrollPosition) || scrollPosition < 0) return;
+
+    isNavigating.current = true;
+
+    window.scrollTo({
+      top: scrollPosition,
       behavior: "smooth",
     });
   }, []);
@@ -104,6 +146,9 @@ export default function Navbar() {
   //============================================================================
 
   useEffect(() => {
+    let firstFrame: number | null = null;
+    let secondFrame: number | null = null;
+
     const handleScrollEnd = () => {
       isNavigating.current = false;
       updateActiveSection();
@@ -114,7 +159,93 @@ export default function Navbar() {
       handleNavigation(customEvent.detail);
     };
 
-    updateActiveSection();
+    //============================================================================
+    //! RECORD PROJECT ENTRY LOCATION
+    //============================================================================
+
+    const handleProjectEntry = (event: MouseEvent) => {
+      if (
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      ) {
+        return;
+      }
+
+      const target = event.target;
+
+      if (!(target instanceof Element)) return;
+
+      const anchor = target.closest("a[href]");
+
+      if (!(anchor instanceof HTMLAnchorElement)) return;
+
+      const destination = new URL(anchor.href, window.location.href);
+
+      if (
+        destination.origin !== window.location.origin ||
+        destination.pathname !== "/projects/bh-finder"
+      ) {
+        return;
+      }
+
+      sessionStorage.setItem(
+        "portfolio:return-location",
+        JSON.stringify({
+          pathname: `${window.location.pathname}${window.location.search}${window.location.hash}`,
+          scrollY: window.scrollY,
+        }),
+      );
+    };
+
+    //============================================================================
+    //! HANDLE PENDING NAVIGATION
+    //============================================================================
+
+    if (pathname === "/") {
+      const pendingScroll = sessionStorage.getItem("portfolio:pending-scroll");
+
+      const pendingSection = sessionStorage.getItem(
+        "portfolio:pending-navigation",
+      );
+
+      if (pendingScroll !== null || pendingSection !== null) {
+        firstFrame = requestAnimationFrame(() => {
+          secondFrame = requestAnimationFrame(() => {
+            const latestPendingScroll = sessionStorage.getItem(
+              "portfolio:pending-scroll",
+            );
+
+            const latestPendingSection = sessionStorage.getItem(
+              "portfolio:pending-navigation",
+            );
+
+            if (latestPendingScroll !== null) {
+              sessionStorage.removeItem("portfolio:pending-scroll");
+              sessionStorage.removeItem("portfolio:pending-navigation");
+
+              handlePendingScroll(Number(latestPendingScroll));
+              return;
+            }
+
+            if (latestPendingSection) {
+              sessionStorage.removeItem("portfolio:pending-navigation");
+
+              handlePendingNavigation(latestPendingSection);
+              return;
+            }
+
+            updateActiveSection();
+          });
+        });
+      } else {
+        updateActiveSection();
+      }
+    }
+
+    window.addEventListener("click", handleProjectEntry, true);
 
     window.addEventListener("scroll", updateActiveSection, {
       passive: true,
@@ -125,6 +256,8 @@ export default function Navbar() {
     window.addEventListener("portfolio:navigate", handleExternalNavigation);
 
     return () => {
+      window.removeEventListener("click", handleProjectEntry, true);
+
       window.removeEventListener("scroll", updateActiveSection);
       window.removeEventListener("scrollend", handleScrollEnd);
 
@@ -132,12 +265,35 @@ export default function Navbar() {
         "portfolio:navigate",
         handleExternalNavigation,
       );
+
+      if (firstFrame !== null) {
+        cancelAnimationFrame(firstFrame);
+      }
+
+      if (secondFrame !== null) {
+        cancelAnimationFrame(secondFrame);
+      }
     };
-  }, [handleNavigation, updateActiveSection]);
+  }, [
+    pathname,
+    handleNavigation,
+    handlePendingNavigation,
+    handlePendingScroll,
+    updateActiveSection,
+  ]);
+
+  //============================================================================
+  //! HOMEPAGE ONLY
+  //============================================================================
+
+  if (pathname !== "/") return null;
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 bg-transparent">
+      <header
+        style={{ viewTransitionName: "portfolio-navbar" }}
+        className="fixed inset-x-0 top-0 z-50 bg-transparent"
+      >
         {/*==================================================================
           //! NAVBAR GRADIENT
         ==================================================================*/}

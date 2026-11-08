@@ -8,8 +8,8 @@ import { useRef } from "react";
 
 import useScrollAnimation from "@/components/hooks/useScrollAnimation";
 
-import ContactInfo from "./ContactInfo";
-import ContactForm from "./ContactForm";
+import ContactInfo from "./components/ContactInfo";
+import ContactForm from "./components/ContactForm";
 
 //============================================================================
 //! CONTACT SECTION

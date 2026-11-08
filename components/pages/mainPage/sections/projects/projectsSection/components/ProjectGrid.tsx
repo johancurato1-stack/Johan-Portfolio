@@ -4,7 +4,7 @@
 
 import ProjectCard from "./ProjectCard";
 import EmptyProjectCard from "./ProjectCardEmpty";
-import type { Project } from "./ProjectData";
+import type { Project } from "../ProjectData";
 
 //============================================================================
 //! PROPS

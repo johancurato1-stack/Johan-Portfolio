@@ -4,7 +4,7 @@
 
 import IconContainer from "@/components/ui/IconContainer";
 
-import { experienceData, type Experience } from "./ExperienceData";
+import { experienceData, type Experience } from "../ExperienceData";
 
 //============================================================================
 //! EXPERIENCE ICON

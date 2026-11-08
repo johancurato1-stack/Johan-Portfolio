@@ -51,6 +51,7 @@ function CheckIcon() {
       strokeWidth="1.7"
       strokeLinecap="round"
       strokeLinejoin="round"
+      className="translate-y-px"
       aria-hidden="true"
     >
       <path d="m5 12 4 4L19 6" />
