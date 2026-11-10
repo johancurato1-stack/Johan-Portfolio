@@ -68,8 +68,8 @@ export default function SystemArchitectureSection() {
   //! SCROLL ANIMATIONS
   //============================================================================
 
-  useScrollAnimation(introductionRef, 0);
-  useScrollAnimation(highlightsRef, 150, 120);
+  useScrollAnimation(introductionRef, 0, 110);
+  useScrollAnimation(highlightsRef, 0, 110);
 
   return (
     <section
@@ -82,7 +82,10 @@ export default function SystemArchitectureSection() {
         ====================================================================*/}
 
         <div ref={introductionRef}>
-          <div className="mb-5 flex items-center gap-3">
+          <div
+            data-scroll-animation-item
+            className="mb-5 flex items-center gap-3"
+          >
             <span className="h-2 w-2 rounded-full border border-[#B9BEC7]" />
 
             <p className="text-[10px] font-medium tracking-[0.2em] text-[#858991]">
@@ -94,7 +97,10 @@ export default function SystemArchitectureSection() {
             //! SECTION HEADING
           ==================================================================*/}
 
-          <h2 className="text-3xl font-medium tracking-tight text-[#858991] sm:text-4xl">
+          <h2
+            data-scroll-animation-item
+            className="text-3xl font-medium tracking-tight text-[#858991] sm:text-4xl"
+          >
             Application <span className="text-[#F5F5F6]">Architecture</span>
           </h2>
 
@@ -102,7 +108,10 @@ export default function SystemArchitectureSection() {
             //! SECTION DESCRIPTION
           ==================================================================*/}
 
-          <p className="mt-4 max-w-lg text-sm leading-7 text-[#858991]">
+          <p
+            data-scroll-animation-item
+            className="mt-4 max-w-lg text-sm leading-7 text-[#858991]"
+          >
             The overall structure and flow of BH Finder, from the client
             applications to the backend services and database, following a
             clean, layered architecture with the Repository Pattern.

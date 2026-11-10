@@ -45,7 +45,7 @@ const sectionOffsets: Record<string, number> = {
   "product-experience": 3,
   "system-architecture": 3,
   "challenges-solutions": 52,
-  conclusion: 88,
+  conclusion: 1,
 };
 
 //============================================================================
@@ -67,6 +67,7 @@ export default function ProjectNavbar() {
   const [activeSection, setActiveSection] = useState("project-overview");
 
   const isNavigating = useRef(false);
+  const isFooterNavigating = useRef(false);
   const navigationTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   //============================================================================
@@ -177,6 +178,7 @@ export default function ProjectNavbar() {
       }
 
       isNavigating.current = true;
+      isFooterNavigating.current = false;
       setActiveSection(sectionId);
 
       const targetPosition =
@@ -211,6 +213,12 @@ export default function ProjectNavbar() {
     }
 
     isNavigating.current = false;
+
+    if (isFooterNavigating.current) {
+      isFooterNavigating.current = false;
+      return;
+    }
+
     updateActiveSection();
   }, [updateActiveSection]);
 
@@ -242,6 +250,11 @@ export default function ProjectNavbar() {
       }
     };
 
+    const handleFooterNavigation = (event: Event) => {
+      const customEvent = event as CustomEvent<string>;
+      handleNavigation(customEvent.detail);
+    };
+
     updateActiveSection();
 
     window.addEventListener("scroll", handleScroll, {
@@ -250,22 +263,29 @@ export default function ProjectNavbar() {
 
     window.addEventListener("scrollend", handleScrollEnd);
 
+    window.addEventListener(
+      "portfolio:project-navigate",
+      handleFooterNavigation,
+    );
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("scrollend", handleScrollEnd);
+
+      window.removeEventListener(
+        "portfolio:project-navigate",
+        handleFooterNavigation,
+      );
 
       if (navigationTimer.current) {
         clearTimeout(navigationTimer.current);
       }
     };
-  }, [finishNavigation, updateActiveSection]);
+  }, [finishNavigation, handleNavigation, updateActiveSection]);
 
   return (
     <>
-      <header
-        style={{ viewTransitionName: "portfolio-navbar" }}
-        className="fixed inset-x-0 top-0 z-50 bg-transparent"
-      >
+      <header className="fixed inset-x-0 top-0 z-50 bg-transparent">
         {/*==================================================================
           //! NAVBAR GRADIENT
         ==================================================================*/}
@@ -341,16 +361,16 @@ export default function ProjectNavbar() {
             </div>
 
             {/*================================================================
-              //! BACK TO PROJECTS BUTTON
+              //! BACK BUTTON
             ================================================================*/}
 
             <button
               type="button"
               onClick={handleBackNavigation}
-              className="inline-flex items-center gap-2 rounded-full border border-[#41444B] px-5 py-2.5 text-sm font-medium text-[#B9BEC7] transition-colors duration-300 hover:border-[#B9BEC7] hover:text-[#F5F5F6]"
+              className="inline-flex cursor-pointer items-center gap-2 rounded-full border border-[#41444B] px-5 py-2.5 text-sm font-medium text-[#B9BEC7] transition-colors duration-300 hover:border-[#B9BEC7] hover:text-[#F5F5F6]"
             >
               <span aria-hidden="true">←</span>
-              Back to Projects
+              Back
             </button>
           </div>
         </nav>

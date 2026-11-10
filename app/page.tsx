@@ -5,7 +5,7 @@
 import { ViewTransition } from "react";
 
 import Navbar from "../components/layout/navbar/main/MainNavbar";
-import Footer from "../components/layout/Footer";
+import Footer from "../components/layout/footer/main/MainFooter";
 
 import HeroSection from "../components/pages/mainPage/sections/home/homeSection/HomeSection";
 import ServicesSection from "../components/pages/mainPage/sections/home/servicesSection/ServicesSection";

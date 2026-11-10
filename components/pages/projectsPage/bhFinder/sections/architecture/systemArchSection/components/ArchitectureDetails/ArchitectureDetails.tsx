@@ -5,6 +5,9 @@
 ============================================================================*/
 
 import Image from "next/image";
+import { useRef } from "react";
+
+import useScrollAnimation from "@/components/hooks/useScrollAnimation";
 
 //============================================================================
 //! SUPABASE ICON
@@ -486,8 +489,16 @@ function TechnologyStackPanel() {
 //============================================================================
 
 export default function ArchitectureDetails() {
+  const detailsRef = useRef<HTMLDivElement>(null);
+
+  //============================================================================
+  //! SCROLL ANIMATIONS
+  //============================================================================
+
+  useScrollAnimation(detailsRef, 0);
+
   return (
-    <div className="mt-6 overflow-x-auto pb-2">
+    <div ref={detailsRef} className="mt-6 overflow-x-auto pb-2">
       <div className="grid min-w-[1080px] grid-cols-3 gap-5">
         <RepositoryPatternPanel />
         <ArchitectureFlowPanel />

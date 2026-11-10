@@ -119,7 +119,10 @@ function FlowNode({
 
 export default function BackendSecurityDiagram() {
   return (
-    <div className="rounded-lg border border-[#41444B] bg-[#202226]/60 p-4 transition-colors duration-300 hover:border-[#858991] sm:p-5">
+    <div
+      data-scroll-animation-item
+      className="rounded-lg border border-[#41444B] bg-[#202226]/60 p-4 transition-colors duration-300 hover:border-[#858991] sm:p-5"
+    >
       <div className="flex min-w-[420px] items-center gap-1 sm:gap-2">
         <FlowNode
           title="Flutter App"

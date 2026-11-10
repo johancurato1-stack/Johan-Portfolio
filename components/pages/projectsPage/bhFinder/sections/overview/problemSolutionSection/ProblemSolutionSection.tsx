@@ -124,32 +124,29 @@ function ProblemSolutionIcon({ name }: { name: ProblemSolutionIcon }) {
 //============================================================================
 
 export default function ProblemSolutionSection() {
-  const introductionRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const descriptionRef = useRef<HTMLParagraphElement>(null);
-  const comparisonRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   //============================================================================
   //! SCROLL ANIMATIONS
   //============================================================================
 
-  useScrollAnimation(introductionRef, 0);
-  useScrollAnimation(headingRef, 150);
-  useScrollAnimation(descriptionRef, 250);
-  useScrollAnimation(comparisonRef, 200);
+  useScrollAnimation(contentRef, 0, 110);
 
   return (
     <section
       id="problem-solution"
       className="relative px-6 pt-8 pb-16 sm:px-10 sm:pt-10 sm:pb-20 lg:px-12 lg:pt-10 lg:pb-20"
     >
-      <div className="mx-auto max-w-7xl">
+      <div ref={contentRef} className="mx-auto max-w-7xl">
         {/*====================================================================
           //! SECTION INTRODUCTION
         ====================================================================*/}
 
         <div>
-          <div ref={introductionRef} className="mb-7 flex items-center gap-3">
+          <div
+            data-scroll-animation-item
+            className="mb-7 flex items-center gap-3"
+          >
             <span className="h-2 w-2 rounded-full border border-[#B9BEC7]" />
 
             <p className="text-[10px] font-medium tracking-[0.2em] text-[#858991]">
@@ -162,7 +159,7 @@ export default function ProblemSolutionSection() {
           ==================================================================*/}
 
           <h2
-            ref={headingRef}
+            data-scroll-animation-item
             className="text-4xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-5xl"
           >
             The Problem <span className="text-[#F5F5F6]">&amp; Solution</span>
@@ -173,7 +170,7 @@ export default function ProblemSolutionSection() {
           ==================================================================*/}
 
           <p
-            ref={descriptionRef}
+            data-scroll-animation-item
             className="mt-5 max-w-lg text-sm leading-7 text-[#858991] sm:text-base"
           >
             Addressing the real challenges students and landlords face in
@@ -185,12 +182,15 @@ export default function ProblemSolutionSection() {
           //! PROBLEM AND SOLUTION COMPARISON
         ====================================================================*/}
 
-        <div ref={comparisonRef} className="mt-10">
+        <div className="mt-10">
           {/*==================================================================
             //! COLUMN HEADINGS
           ==================================================================*/}
 
-          <div className="grid grid-cols-[1fr_32px_1fr] items-center gap-3 border-b border-[#41444B] px-1 pb-3 sm:grid-cols-[1fr_44px_1fr] sm:gap-5">
+          <div
+            data-scroll-animation-item
+            className="grid grid-cols-[1fr_32px_1fr] items-center gap-3 border-b border-[#41444B] px-1 pb-3 sm:grid-cols-[1fr_44px_1fr] sm:gap-5"
+          >
             <p className="text-center text-xs font-semibold text-[#F5F5F6] sm:text-sm">
               The Problem
             </p>
@@ -209,6 +209,7 @@ export default function ProblemSolutionSection() {
           {problemSolutionData.map((item) => (
             <div
               key={item.problem.title}
+              data-scroll-animation-item
               className="grid grid-cols-[1fr_32px_1fr] items-start gap-3 border-b border-[#41444B] py-4 sm:grid-cols-[1fr_44px_1fr] sm:gap-5 sm:py-5"
             >
               {/*============================================================

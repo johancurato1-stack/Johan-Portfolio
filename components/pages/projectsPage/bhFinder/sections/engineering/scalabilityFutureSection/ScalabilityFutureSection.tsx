@@ -95,7 +95,10 @@ function ScalabilityFutureCard({
   icon: ScalabilityFutureIcon;
 }) {
   return (
-    <div className="flex min-h-[64px] min-w-0 items-center gap-3 rounded-lg border border-[#41444B] bg-[#202226]/60 px-3 py-2.5 transition-colors duration-300 hover:border-[#858991]">
+    <div
+      data-scroll-animation-item
+      className="flex min-h-[64px] min-w-0 items-center gap-3 rounded-lg border border-[#41444B] bg-[#202226]/60 px-3 py-2.5 transition-colors duration-300 hover:border-[#858991]"
+    >
       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-[#41444B] bg-[#111214] text-[#F5F5F6]">
         <ScalabilityFutureIcon name={icon} />
       </div>
@@ -130,7 +133,7 @@ export default function ScalabilityFutureSection() {
   useScrollAnimation(introductionRef, 0);
   useScrollAnimation(headingRef, 150);
   useScrollAnimation(descriptionRef, 250);
-  useScrollAnimation(cardsRef, 200);
+  useScrollAnimation(cardsRef, 0, 120);
 
   return (
     <section

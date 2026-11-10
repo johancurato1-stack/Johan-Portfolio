@@ -72,15 +72,24 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#111214]">
-      <div className="mx-auto max-w-7xl px-6 pt-12 pb-7 sm:px-10 lg:px-12 lg:pt-16">
+    <footer className="relative isolate overflow-hidden bg-[#111214]">
+      {/*====================================================================
+        //! FOOTER GRADIENT
+      ====================================================================*/}
+
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-32 bg-gradient-to-t from-[#151619]/95 via-[#151619]/65 to-transparent"
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 pt-12 pb-7 sm:px-10 lg:px-12 lg:pt-16">
         {/*====================================================================
           //! FOOTER CONTENT
         ====================================================================*/}
 
         <div
           ref={contentRef}
-          className="grid grid-cols-2 justify-items-center gap-8 sm:grid-cols-4 sm:gap-8"
+          className="flex flex-wrap justify-between gap-x-8 gap-y-8"
         >
           {/*==================================================================
             //! DISCOVER
@@ -207,7 +216,7 @@ export default function Footer() {
             type="button"
             onClick={() => handleNavigation("home")}
             aria-label="Back to top"
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#41444B] text-[#B9BEC7] transition-colors duration-300 hover:border-[#858991] hover:text-[#F5F5F6]"
+            className="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-[#41444B] text-[#B9BEC7] transition-colors duration-300 hover:border-[#858991] hover:text-[#F5F5F6]"
           >
             <svg
               width="16"

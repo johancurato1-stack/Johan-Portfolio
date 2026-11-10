@@ -84,6 +84,7 @@ export default function BackendSecurityOverview() {
         {backendTechnologies.map((technology) => (
           <div
             key={technology.name}
+            data-scroll-animation-item
             className="flex h-12 items-center gap-2.5 rounded-lg border border-[#41444B] bg-[#202226] px-2 transition-colors duration-300 hover:border-[#858991]"
           >
             <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-[#41444B] bg-[#111214]">

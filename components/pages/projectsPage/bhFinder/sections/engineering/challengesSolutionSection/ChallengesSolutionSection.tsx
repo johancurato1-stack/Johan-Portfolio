@@ -114,72 +114,70 @@ function StatusIcon({ status }: { status: "completed" | "in-development" }) {
 //============================================================================
 
 export default function ChallengesSolutionSection() {
-  const introductionRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const descriptionRef = useRef<HTMLParagraphElement>(null);
-  const comparisonRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   //============================================================================
   //! SCROLL ANIMATIONS
   //============================================================================
 
-  useScrollAnimation(introductionRef, 0);
-  useScrollAnimation(headingRef, 150);
-  useScrollAnimation(descriptionRef, 250);
-  useScrollAnimation(comparisonRef, 200);
+  useScrollAnimation(contentRef, 0, 110);
 
   return (
     <section
       id="challenges-solutions"
       className="relative px-6 pt-0 pb-16 sm:px-10 sm:pt-2 sm:pb-20 lg:px-12 lg:pt-2 lg:pb-20"
     >
-      <div className="mx-auto max-w-7xl">
+      <div ref={contentRef} className="mx-auto max-w-7xl">
         {/*====================================================================
           //! SECTION INTRODUCTION
         ====================================================================*/}
 
-        <div>
-          <div ref={introductionRef} className="mb-7 flex items-center gap-3">
-            <span className="h-2 w-2 rounded-full border border-[#B9BEC7]" />
+        <div
+          data-scroll-animation-item
+          className="mb-7 flex items-center gap-3"
+        >
+          <span className="h-2 w-2 rounded-full border border-[#B9BEC7]" />
 
-            <p className="text-[10px] font-medium tracking-[0.2em] text-[#858991]">
-              CHALLENGES &amp; ENGINEERING DECISIONS
-            </p>
-          </div>
-
-          {/*==================================================================
-            //! SECTION HEADING
-          ==================================================================*/}
-
-          <h2
-            ref={headingRef}
-            className="text-3xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-4xl"
-          >
-            Challenges <span className="text-[#F5F5F6]">&amp; Solutions</span>
-          </h2>
-
-          {/*==================================================================
-            //! SECTION DESCRIPTION
-          ==================================================================*/}
-
-          <p
-            ref={descriptionRef}
-            className="mt-4 max-w-sm text-sm leading-7 text-[#858991]"
-          >
-            Key technical challenges I encountered and how I approached them.
+          <p className="text-[10px] font-medium tracking-[0.2em] text-[#858991]">
+            CHALLENGES &amp; ENGINEERING DECISIONS
           </p>
         </div>
+
+        {/*====================================================================
+          //! SECTION HEADING
+        ====================================================================*/}
+
+        <h2
+          data-scroll-animation-item
+          className="text-3xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-4xl"
+        >
+          Challenges <span className="text-[#F5F5F6]">&amp; Solutions</span>
+        </h2>
+
+        {/*====================================================================
+          //! SECTION DESCRIPTION
+        ====================================================================*/}
+
+        <p
+          data-scroll-animation-item
+          className="mt-4 max-w-sm text-sm leading-7 text-[#858991]"
+        >
+          Key technical challenges I encountered and how I approached them.
+        </p>
 
         {/*====================================================================
           //! CHALLENGES AND SOLUTIONS COMPARISON
         ====================================================================*/}
 
-        <div ref={comparisonRef} className="mt-10">
+        <div className="mt-10">
           {/*==================================================================
             //! COLUMN HEADINGS
           ==================================================================*/}
 
-          <div className="grid grid-cols-[1fr_32px_1fr] items-center gap-3 border-b border-[#41444B] px-1 pb-3 sm:grid-cols-[1fr_44px_1fr] sm:gap-5">
+          <div
+            data-scroll-animation-item
+            className="grid grid-cols-[1fr_32px_1fr] items-center gap-3 border-b border-[#41444B] px-1 pb-3 sm:grid-cols-[1fr_44px_1fr] sm:gap-5"
+          >
             <p className="text-center text-xs font-semibold text-[#F5F5F6] sm:text-sm">
               The Challenge
             </p>
@@ -198,6 +196,7 @@ export default function ChallengesSolutionSection() {
           {challengesData.map((item) => (
             <div
               key={item.id}
+              data-scroll-animation-item
               className="grid grid-cols-[1fr_32px_1fr] items-start gap-3 border-b border-[#41444B] py-4 sm:grid-cols-[1fr_44px_1fr] sm:gap-5 sm:py-5"
             >
               {/*============================================================

@@ -90,7 +90,7 @@ body::before {
   animation: ambient-breathe 24s ease-in-out infinite alternate;
 }
 
-body > * {
+body > *:not(#portfolio-preloader) {
   position: relative;
   z-index: 1;
 }

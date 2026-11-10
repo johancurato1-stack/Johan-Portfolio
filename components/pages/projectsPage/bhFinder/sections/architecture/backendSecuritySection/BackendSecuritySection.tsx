@@ -25,7 +25,7 @@ export default function BackendSecuritySection() {
   //============================================================================
 
   useScrollAnimation(introductionRef, 0);
-  useScrollAnimation(contentRef, 150, 120);
+  useScrollAnimation(contentRef, 0, 120);
 
   return (
     <section

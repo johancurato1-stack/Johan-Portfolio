@@ -5,6 +5,9 @@
 ============================================================================*/
 
 import Image from "next/image";
+import { useRef } from "react";
+
+import useScrollAnimation from "@/components/hooks/useScrollAnimation";
 
 import {
   applicationComponents,
@@ -380,8 +383,16 @@ function RepositoryPatternBracket() {
 //============================================================================
 
 export default function ArchitectureDiagram() {
+  const diagramRef = useRef<HTMLDivElement>(null);
+
+  //============================================================================
+  //! SCROLL ANIMATIONS
+  //============================================================================
+
+  useScrollAnimation(diagramRef, 0);
+
   return (
-    <div className="mt-7 overflow-x-auto pb-5">
+    <div ref={diagramRef} className="mt-7 overflow-x-auto pb-5">
       <div className="min-w-[1080px]">
         {/*==================================================================
           //! FIVE-COLUMN ARCHITECTURE

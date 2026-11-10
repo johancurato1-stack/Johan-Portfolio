@@ -17,30 +17,20 @@ import { introProjectMetadata, introTechStack } from "./IntroData";
 //============================================================================
 
 export default function IntroSection() {
-  const introductionRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
-  const descriptionRef = useRef<HTMLParagraphElement>(null);
-  const techStackRef = useRef<HTMLDivElement>(null);
-  const mockupsRef = useRef<HTMLDivElement>(null);
-  const metadataRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   //============================================================================
   //! SCROLL ANIMATIONS
   //============================================================================
 
-  useScrollAnimation(introductionRef, 0);
-  useScrollAnimation(headingRef, 150);
-  useScrollAnimation(descriptionRef, 350);
-  useScrollAnimation(techStackRef, 450);
-  useScrollAnimation(mockupsRef, 200);
-  useScrollAnimation(metadataRef, 200);
+  useScrollAnimation(contentRef, 0, 110);
 
   return (
     <section
       id="project-overview"
       className="relative overflow-hidden px-6 pt-1 pb-8 sm:px-10 sm:pt-5 sm:pb-8 lg:px-12 lg:pt-8 lg:pb-12"
     >
-      <div className="mx-auto max-w-7xl">
+      <div ref={contentRef} className="mx-auto max-w-7xl">
         {/*====================================================================
           //! MAIN INTRODUCTION CONTENT
         ====================================================================*/}
@@ -55,7 +45,10 @@ export default function IntroSection() {
               //! PROJECT LABEL
             ================================================================*/}
 
-            <div ref={introductionRef} className="mb-7 flex items-center gap-3">
+            <div
+              data-scroll-animation-item
+              className="mb-7 flex items-center gap-3"
+            >
               <span className="h-2 w-2 rounded-full border border-[#B9BEC7]" />
 
               <p className="text-[10px] font-medium tracking-[0.2em] text-[#858991]">
@@ -67,7 +60,7 @@ export default function IntroSection() {
               //! PROJECT HEADING
             ================================================================*/}
 
-            <div ref={headingRef}>
+            <div data-scroll-animation-item>
               <p className="text-xs font-medium tracking-wide text-[#B9BEC7]">
                 MOBILE APPLICATION
               </p>
@@ -87,7 +80,7 @@ export default function IntroSection() {
             ================================================================*/}
 
             <p
-              ref={descriptionRef}
+              data-scroll-animation-item
               className="mt-6 max-w-lg text-sm leading-7 text-[#858991] sm:text-base"
             >
               A boarding house discovery and management
@@ -103,7 +96,10 @@ export default function IntroSection() {
               //! TECHNOLOGY STACK
             ================================================================*/}
 
-            <div ref={techStackRef} className="mt-7 flex flex-wrap gap-2">
+            <div
+              data-scroll-animation-item
+              className="mt-7 flex flex-wrap gap-2"
+            >
               {introTechStack.map((technology) => (
                 <TechPill key={technology} label={technology} />
               ))}
@@ -114,15 +110,15 @@ export default function IntroSection() {
             //! PROJECT MOCKUPS
           ==================================================================*/}
 
-          <div
-            ref={mockupsRef}
-            className="relative mx-auto flex h-[430px] w-full max-w-[520px] items-center justify-center sm:h-[500px] lg:h-[480px]"
-          >
+          <div className="relative mx-auto flex h-[430px] w-full max-w-[520px] items-center justify-center sm:h-[500px] lg:h-[480px]">
             {/*================================================================
               //! WHITE IPHONE MOCKUP
             ================================================================*/}
 
-            <div className="absolute right-[4%] top-[9%] z-0 h-[84%] w-[51%]">
+            <div
+              data-scroll-animation-item
+              className="absolute right-[4%] top-[9%] z-0 h-[84%] w-[51%]"
+            >
               <Image
                 src="/images/projectsPage/bhFinder/sections/overview/introSection/BH%20Finder%20Mobile%20App%20Mockup%203.png"
                 alt="BH Finder boarding house details displayed on a white iPhone"
@@ -137,7 +133,10 @@ export default function IntroSection() {
               //! BLACK IPHONE MOCKUP
             ================================================================*/}
 
-            <div className="absolute left-[5%] top-0 z-10 h-full w-[62%]">
+            <div
+              data-scroll-animation-item
+              className="absolute left-[5%] top-0 z-10 h-full w-[62%]"
+            >
               <Image
                 src="/images/projectsPage/bhFinder/sections/overview/introSection/BH%20Finder%20Mobile%20App%20Mockup%202.png"
                 alt="BH Finder home screen displayed on a black iPhone"
@@ -154,13 +153,11 @@ export default function IntroSection() {
           //! PROJECT METADATA
         ====================================================================*/}
 
-        <div
-          ref={metadataRef}
-          className="mt-8 grid grid-cols-2 border-y border-[#41444B] sm:grid-cols-4"
-        >
+        <div className="mt-8 grid grid-cols-2 border-y border-[#41444B] sm:grid-cols-4">
           {introProjectMetadata.map((item, index) => (
             <div
               key={item.label}
+              data-scroll-animation-item
               className={`flex min-h-[76px] items-center gap-3 py-4 ${
                 index % 2 === 0 ? "pl-1" : "pl-5"
               } ${index < 2 ? "border-b border-[#41444B] sm:border-b-0" : ""} ${

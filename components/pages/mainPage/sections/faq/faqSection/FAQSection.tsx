@@ -120,7 +120,7 @@ export default function FAQSection() {
                   type="button"
                   onClick={() => toggleFAQ(index)}
                   aria-expanded={isOpen}
-                  className="flex w-full items-center justify-between gap-6 text-left"
+                  className="flex w-full cursor-pointer items-center justify-between gap-6 text-left"
                 >
                   <span
                     className={`text-sm font-medium transition-colors duration-300 sm:text-base ${

@@ -18,19 +18,13 @@ import useScrollAnimation from "@/components/hooks/useScrollAnimation";
 export default function ConclusionSection() {
   const router = useRouter();
 
-  const introductionRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   //============================================================================
   //! SCROLL ANIMATIONS
   //============================================================================
 
-  useScrollAnimation(introductionRef, 0);
-  useScrollAnimation(headingRef, 150);
-  useScrollAnimation(imageRef, 200);
-  useScrollAnimation(contentRef, 250);
+  useScrollAnimation(contentRef, 0, 110);
 
   //============================================================================
   //! EXPLORE OTHER PROJECTS NAVIGATION
@@ -45,14 +39,17 @@ export default function ConclusionSection() {
   return (
     <section
       id="conclusion"
-      className="relative border-t border-[#41444B] bg-[#111214] px-6 py-12 sm:px-10 sm:py-16 lg:px-12 lg:py-20"
+      className="relative border-t border-[#41444B] bg-[#111214] px-6 pt-20 pb-12 sm:px-10 sm:pt-24 sm:pb-16 lg:px-12 lg:pt-32 lg:pb-20"
     >
-      <div className="mx-auto max-w-7xl">
+      <div ref={contentRef} className="mx-auto max-w-7xl">
         {/*====================================================================
           //! SECTION INTRODUCTION
         ====================================================================*/}
 
-        <div ref={introductionRef} className="mb-7 flex items-center gap-3">
+        <div
+          data-scroll-animation-item
+          className="mb-7 flex items-center gap-3"
+        >
           <span className="h-2 w-2 rounded-full border border-[#B9BEC7]" />
 
           <p className="text-[10px] font-medium tracking-[0.2em] text-[#858991]">
@@ -69,7 +66,10 @@ export default function ConclusionSection() {
             //! MOBILE APP MOCKUP
           ==================================================================*/}
 
-          <div ref={imageRef} className="flex items-center justify-center">
+          <div
+            data-scroll-animation-item
+            className="flex items-center justify-center"
+          >
             <Image
               src="/images/projectsPage/bhFinder/sections/roadmap/conclusionSection/BH%20Finder%20Mobile%20App%20Mockup%208.png"
               alt="BH Finder mobile application mockup"
@@ -83,16 +83,19 @@ export default function ConclusionSection() {
             //! PROJECT OUTCOME AND REFLECTION
           ==================================================================*/}
 
-          <div ref={contentRef}>
+          <div>
             <h2
-              ref={headingRef}
+              data-scroll-animation-item
               className="text-3xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-4xl"
             >
               Project Outcome{" "}
               <span className="text-[#F5F5F6]">&amp; Reflection</span>
             </h2>
 
-            <p className="mt-5 text-sm leading-7 text-[#858991]">
+            <p
+              data-scroll-animation-item
+              className="mt-5 text-sm leading-7 text-[#858991]"
+            >
               BH Finder is a real-world full-stack project that allowed me to
               apply my skills in mobile development, backend design, and system
               architecture. It&apos;s still in development with the messaging
@@ -104,7 +107,7 @@ export default function ConclusionSection() {
               //! KEY TAKEAWAYS
             ================================================================*/}
 
-            <div className="mt-8">
+            <div data-scroll-animation-item className="mt-8">
               <h3 className="text-sm font-medium text-[#F5F5F6]">
                 Key Takeaways
               </h3>
@@ -147,7 +150,10 @@ export default function ConclusionSection() {
               //! PROJECT ACTIONS
             ================================================================*/}
 
-            <div className="mt-9 flex flex-wrap items-center gap-3">
+            <div
+              data-scroll-animation-item
+              className="mt-9 flex flex-wrap items-center gap-3"
+            >
               <Button
                 href="https://github.com/johancurato1-stack"
                 variant="primary"

@@ -100,7 +100,10 @@ function BackendFeatureCard({
   icon: string;
 }) {
   return (
-    <div className="flex min-h-[72px] min-w-0 items-center gap-3 rounded-lg border border-[#41444B] bg-[#202226] px-3 py-2.5 transition-colors duration-300 hover:border-[#858991]">
+    <div
+      data-scroll-animation-item
+      className="flex min-h-[72px] min-w-0 items-center gap-3 rounded-lg border border-[#41444B] bg-[#202226] px-3 py-2.5 transition-colors duration-300 hover:border-[#858991]"
+    >
       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-[#41444B] bg-[#111214] text-[#F5F5F6]">
         <BackendFeatureIcon type={icon} />
       </div>

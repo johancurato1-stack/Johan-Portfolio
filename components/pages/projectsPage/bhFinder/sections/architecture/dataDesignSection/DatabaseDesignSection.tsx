@@ -16,12 +16,14 @@ import DatabaseSchemaViewer from "./components/DatabaseSchemaViewer";
 
 export default function DatabaseDesignSection() {
   const introductionRef = useRef<HTMLDivElement>(null);
+  const schemaViewerRef = useRef<HTMLDivElement>(null);
 
   //============================================================================
   //! SCROLL ANIMATIONS
   //============================================================================
 
   useScrollAnimation(introductionRef, 0);
+  useScrollAnimation(schemaViewerRef, 0);
 
   return (
     <section
@@ -64,7 +66,10 @@ export default function DatabaseDesignSection() {
           //! DATABASE SCHEMA VIEWER
         ====================================================================*/}
 
-        <div className="mt-7 aspect-[2.18/1] min-h-[248px] w-full overflow-hidden rounded-lg border border-[#41444B]/70 bg-[#111214] shadow-[inset_0_0_24px_rgba(0,0,0,0.35)]">
+        <div
+          ref={schemaViewerRef}
+          className="mt-7 aspect-[2.18/1] min-h-[248px] w-full overflow-hidden rounded-lg border border-[#41444B]/70 bg-[#111214] shadow-[inset_0_0_24px_rgba(0,0,0,0.35)]"
+        >
           <DatabaseSchemaViewer />
         </div>
       </div>

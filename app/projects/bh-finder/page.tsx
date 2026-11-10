@@ -16,9 +16,12 @@ import DatabaseDesignSection from "@/components/pages/projectsPage/bhFinder/sect
 import BackendSecuritySection from "@/components/pages/projectsPage/bhFinder/sections/architecture/backendSecuritySection/BackendSecuritySection";
 
 import ChallengesSolutionSection from "@/components/pages/projectsPage/bhFinder/sections/engineering/challengesSolutionSection/ChallengesSolutionSection";
-
 import ScalabilityFutureSection from "@/components/pages/projectsPage/bhFinder/sections/engineering/scalabilityFutureSection/ScalabilityFutureSection";
+
 import ConclusionSection from "@/components/pages/projectsPage/bhFinder/sections/conclusion/conclusionSection/ConclusionSection";
+import ProjectFAQSection from "@/components/pages/projectsPage/bhFinder/sections/faq/faqSection/FAQSection";
+
+import ProjectFooter from "@/components/layout/footer/projects/bhFinder/ProjectFooter";
 
 //============================================================================
 //! BH FINDER PROJECT PAGE
@@ -71,8 +74,16 @@ export default function BHFinderPage() {
         <ConclusionSection />
 
         {/*======================================================================
-          //! PROJECT SECTIONS
+          //! FAQ SECTION
         ======================================================================*/}
+
+        <ProjectFAQSection />
+
+        {/*======================================================================
+          //! PROJECT FOOTER
+        ======================================================================*/}
+
+        <ProjectFooter />
       </main>
     </ViewTransition>
   );
