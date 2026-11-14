@@ -160,9 +160,7 @@ export default function IntroSection() {
               data-scroll-animation-item
               className={`flex min-h-[76px] items-center gap-3 py-4 ${
                 index % 2 === 0 ? "pl-1" : "pl-5"
-              } ${index < 2 ? "border-b border-[#41444B] sm:border-b-0" : ""} ${
-                index % 2 === 1 ? "sm:border-l sm:border-[#41444B]" : ""
-              } ${index >= 2 ? "sm:border-l sm:border-[#41444B]" : ""} sm:px-5`}
+              } sm:px-5`}
             >
               {/*============================================================
                 //! METADATA ICON

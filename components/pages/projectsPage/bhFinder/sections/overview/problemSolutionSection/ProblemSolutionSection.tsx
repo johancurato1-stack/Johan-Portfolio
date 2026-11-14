@@ -160,7 +160,7 @@ export default function ProblemSolutionSection() {
 
           <h2
             data-scroll-animation-item
-            className="text-4xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-5xl"
+            className="text-4xl leading-[1.12] font-medium tracking-tight text-[#B9BEC7] sm:text-5xl"
           >
             The Problem <span className="text-[#F5F5F6]">&amp; Solution</span>
           </h2>
@@ -210,7 +210,7 @@ export default function ProblemSolutionSection() {
             <div
               key={item.problem.title}
               data-scroll-animation-item
-              className="grid grid-cols-[1fr_32px_1fr] items-start gap-3 border-b border-[#41444B] py-4 sm:grid-cols-[1fr_44px_1fr] sm:gap-5 sm:py-5"
+              className="grid grid-cols-[1fr_32px_1fr] items-start gap-3 border-b border-border-b border-[#41444B]/50 py-4 sm:grid-cols-[1fr_44px_1fr] sm:gap-5 sm:py-5"
             >
               {/*============================================================
                 //! PROBLEM

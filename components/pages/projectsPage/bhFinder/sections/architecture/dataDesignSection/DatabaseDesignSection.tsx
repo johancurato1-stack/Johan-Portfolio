@@ -48,7 +48,7 @@ export default function DatabaseDesignSection() {
             //! SECTION HEADING
           ==================================================================*/}
 
-          <h2 className="text-3xl font-medium tracking-tight text-[#858991] sm:text-4xl">
+          <h2 className="text-3xl font-medium tracking-tight text-[#B9BEC7] sm:text-4xl">
             Database <span className="text-[#F5F5F6]">Design</span>
           </h2>
 

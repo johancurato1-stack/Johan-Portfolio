@@ -118,13 +118,11 @@ export default function SkillsSection() {
 
             <h2
               ref={headingRef}
-              className="max-w-lg text-3xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-4xl"
+              className="max-w-lg text-3xl leading-[1.12] font-medium tracking-tight text-[#F5F5F6] sm:text-4xl"
             >
-              Technical <span className="text-[#F5F5F6]">skills</span>
-              <span className="block">
-                that I use to <span className="text-[#F5F5F6]">build</span>
-              </span>
-              <span className="block text-[#F5F5F6]">real solutions.</span>
+              Technical skills
+              <span className="block">that I use to build</span>
+              <span className="block">real solutions.</span>
             </h2>
           </div>
 
@@ -166,7 +164,7 @@ export default function SkillsSection() {
               ============================================================*/}
 
               <div className="min-w-0 flex-1">
-                <h3 className="text-sm font-medium text-[#E0E2E6]">
+                <h3 className="text-sm font-medium text-[#F5F5F6]">
                   {skill.title}
                 </h3>
 

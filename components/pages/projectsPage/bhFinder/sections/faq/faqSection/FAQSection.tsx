@@ -51,7 +51,7 @@ export default function ProjectFAQSection() {
             <span className="h-2 w-2 rounded-full border border-[#B9BEC7]" />
 
             <p className="text-[10px] font-medium tracking-[0.2em] text-[#858991]">
-              BH FINDER / FAQ
+              GOT QUESTION?
             </p>
           </div>
 
@@ -99,9 +99,7 @@ export default function ProjectFAQSection() {
                 >
                   <span
                     className={`text-sm font-medium transition-colors duration-300 sm:text-base ${
-                      isOpen
-                        ? "text-[#F5F5F6]"
-                        : "text-[#E0E2E6] group-hover:text-[#F5F5F6]"
+                      isOpen ? "text-[#F5F5F6]" : "text-[#F5F5F6]"
                     }`}
                   >
                     {item.question}

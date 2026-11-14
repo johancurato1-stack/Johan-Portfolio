@@ -13,7 +13,7 @@ import useScrollAnimation from "@/components/hooks/useScrollAnimation";
 //! FOOTER DATA
 //============================================================================
 
-const exploreLinks = [
+const discoverLinks = [
   { label: "Overview", id: "project-overview" },
   { label: "Product", id: "product-experience" },
   { label: "Architecture", id: "system-architecture" },
@@ -94,11 +94,11 @@ export default function ProjectFooter() {
 
           <div data-scroll-animation-item>
             <h3 className="text-xs font-semibold tracking-[0.12em] text-[#858991]">
-              EXPLORE
+              DISCOVER
             </h3>
 
             <ul className="mt-4 space-y-2.5">
-              {exploreLinks.map((link) => (
+              {discoverLinks.map((link) => (
                 <li key={link.id}>
                   <a
                     href={`#${link.id}`}
@@ -106,7 +106,7 @@ export default function ProjectFooter() {
                       event.preventDefault();
                       handleNavigation(link.id);
                     }}
-                    className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#E0E2E6]"
+                    className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#F5F5F6]"
                   >
                     {link.label}
                   </a>

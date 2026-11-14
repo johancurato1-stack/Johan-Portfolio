@@ -109,7 +109,7 @@ export default function Footer() {
                       event.preventDefault();
                       handleNavigation(link.id);
                     }}
-                    className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#E0E2E6]"
+                    className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#F5F5F6]"
                   >
                     {link.label}
                   </a>

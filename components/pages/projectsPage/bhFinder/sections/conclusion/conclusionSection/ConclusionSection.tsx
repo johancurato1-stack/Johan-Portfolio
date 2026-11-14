@@ -71,7 +71,7 @@ export default function ConclusionSection() {
             className="flex items-center justify-center"
           >
             <Image
-              src="/images/projectsPage/bhFinder/sections/roadmap/conclusionSection/BH%20Finder%20Mobile%20App%20Mockup%208.png"
+              src="/images/projectsPage/bhFinder/sections/conclusion/conclusionSection/BH%20Finder%20Mobile%20App%20Mockup%208.png"
               alt="BH Finder mobile application mockup"
               width={800}
               height={900}
@@ -86,10 +86,9 @@ export default function ConclusionSection() {
           <div>
             <h2
               data-scroll-animation-item
-              className="text-3xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-4xl"
+              className="text-3xl leading-[1.12] font-medium tracking-tight text-[#F5F5F6] sm:text-4xl"
             >
-              Project Outcome{" "}
-              <span className="text-[#F5F5F6]">&amp; Reflection</span>
+              Project Outcome &amp; Reflection
             </h2>
 
             <p

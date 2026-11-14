@@ -54,7 +54,7 @@ export default function FeaturedSection() {
               BH Finder
             </h2>
 
-            <p className="mt-5 max-w-lg text-sm leading-7 text-[#A5A8B0]">
+            <p className="mt-5 max-w-lg text-sm leading-7 text-[#858991]">
               A boarding-house finder application designed to help students
               discover and explore available accommodations. Built with a
               Flutter mobile application, Supabase backend, and an accompanying
@@ -98,7 +98,7 @@ export default function FeaturedSection() {
             <div className="ml-auto w-[85%]">
               <Image
                 data-scroll-animation-item
-                src="/images/home/featuredSection/BH%20Finder%20Dashboard%20Laptop%20Mockup.png"
+                src="/images/mainPage/sections/home/featuredSection/BH%20Finder%20Dashboard%20Laptop%20Mockup.png"
                 alt="BH Finder administrative dashboard displayed on a laptop"
                 width={1600}
                 height={1000}
@@ -114,7 +114,7 @@ export default function FeaturedSection() {
             <div className="absolute left-0 top-[55%] z-10 w-[34%] max-w-[230px] -translate-y-1/2">
               <Image
                 data-scroll-animation-item
-                src="/images/home/featuredSection/BH%20Finder%20Mobile%20App%20Mockup.png"
+                src="/images/mainPage/sections/home/featuredSection/BH%20Finder%20Mobile%20App%20Mockup.png"
                 alt="BH Finder mobile application mockup"
                 width={700}
                 height={1200}

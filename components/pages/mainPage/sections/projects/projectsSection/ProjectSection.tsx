@@ -92,7 +92,7 @@ export default function ProjectsSection() {
 
             <h2
               ref={headingRef}
-              className="max-w-lg text-3xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-4xl lg:text-5xl"
+              className="max-w-lg text-3xl leading-[1.12] font-medium tracking-tight text-[#B9BEC7] sm:text-4xl lg:text-5xl"
             >
               Things I&apos;ve
               <span className="block text-[#F5F5F6]">designed and built.</span>

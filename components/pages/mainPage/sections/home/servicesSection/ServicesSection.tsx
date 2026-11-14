@@ -123,7 +123,7 @@ export default function ServicesSection() {
                 //! SERVICE CONTENT
               ================================================================*/}
 
-              <h3 className="mt-6 min-h-10 text-sm font-medium text-[#E0E2E6]">
+              <h3 className="mt-6 min-h-10 text-sm font-medium text-[#F5F5F6]">
                 {service.title}
               </h3>
 

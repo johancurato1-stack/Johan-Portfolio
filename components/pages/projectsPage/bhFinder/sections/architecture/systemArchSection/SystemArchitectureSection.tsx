@@ -99,7 +99,7 @@ export default function SystemArchitectureSection() {
 
           <h2
             data-scroll-animation-item
-            className="text-3xl font-medium tracking-tight text-[#858991] sm:text-4xl"
+            className="text-3xl font-medium tracking-tight text-[#B9BEC7] sm:text-4xl"
           >
             Application <span className="text-[#F5F5F6]">Architecture</span>
           </h2>

@@ -103,7 +103,7 @@ export default function HeroSection() {
           className="relative mx-auto flex h-[420px] w-full max-w-xl items-end justify-center sm:h-[520px] lg:h-[640px]"
         >
           <Image
-            src="/images/home/homeSection/Hero%20Profile.png"
+            src="/images/mainPage/sections/home/homeSection/Hero%20Profile.png"
             alt="Portrait of Johan Curato"
             width={1000}
             height={1200}

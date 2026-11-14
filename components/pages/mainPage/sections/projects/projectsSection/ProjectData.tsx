@@ -46,7 +46,8 @@ export const projectData: Project[] = [
     title: "BH Finder",
     description:
       "A boarding-house finder application designed to help students discover and explore available accommodations.",
-    image: "/images/projects/projectsSection/BH Finder Preview.png",
+    image:
+      "/images/mainPage/sections/projects/projectsSection/BH Finder Preview.png",
     categories: ["Mobile", "Web", "Full-stack", "Backend"],
     technologies: ["Flutter", "Dart", "Supabase", "PostgreSQL"],
     href: "/projects/bh-finder",

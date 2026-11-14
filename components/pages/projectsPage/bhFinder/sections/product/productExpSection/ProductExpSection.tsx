@@ -61,7 +61,7 @@ export default function ProductExpSection() {
 
           <h2
             data-scroll-animation-item
-            className="text-4xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-5xl"
+            className="text-4xl leading-[1.12] font-medium tracking-tight text-[#B9BEC7] sm:text-5xl"
           >
             Three Connected <span className="text-[#F5F5F6]">Experiences</span>
           </h2>

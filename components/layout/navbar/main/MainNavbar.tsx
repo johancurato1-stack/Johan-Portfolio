@@ -160,10 +160,10 @@ export default function Navbar() {
     };
 
     //============================================================================
-    //! RECORD PROJECT ENTRY LOCATION
+    //! RECORD PAGE ENTRY LOCATION
     //============================================================================
 
-    const handleProjectEntry = (event: MouseEvent) => {
+    const handlePageEntry = (event: MouseEvent) => {
       if (
         event.button !== 0 ||
         event.metaKey ||
@@ -184,12 +184,13 @@ export default function Navbar() {
 
       const destination = new URL(anchor.href, window.location.href);
 
-      if (
-        destination.origin !== window.location.origin ||
-        destination.pathname !== "/projects/bh-finder"
-      ) {
-        return;
-      }
+      if (destination.origin !== window.location.origin) return;
+
+      const isProjectEntry = destination.pathname === "/projects/bh-finder";
+
+      const isAboutEntry = destination.pathname === "/about";
+
+      if (!isProjectEntry && !isAboutEntry) return;
 
       sessionStorage.setItem(
         "portfolio:return-location",
@@ -245,7 +246,7 @@ export default function Navbar() {
       }
     }
 
-    window.addEventListener("click", handleProjectEntry, true);
+    window.addEventListener("click", handlePageEntry, true);
 
     window.addEventListener("scroll", updateActiveSection, {
       passive: true,
@@ -256,7 +257,7 @@ export default function Navbar() {
     window.addEventListener("portfolio:navigate", handleExternalNavigation);
 
     return () => {
-      window.removeEventListener("click", handleProjectEntry, true);
+      window.removeEventListener("click", handlePageEntry, true);
 
       window.removeEventListener("scroll", updateActiveSection);
       window.removeEventListener("scrollend", handleScrollEnd);

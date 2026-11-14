@@ -160,7 +160,7 @@ export default function ScalabilityFutureSection() {
 
           <h2
             ref={headingRef}
-            className="text-3xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-4xl"
+            className="text-3xl leading-[1.12] font-medium tracking-tight text-[#B9BEC7] sm:text-4xl"
           >
             Scalability{" "}
             <span className="text-[#F5F5F6]">&amp; Future Improvements</span>

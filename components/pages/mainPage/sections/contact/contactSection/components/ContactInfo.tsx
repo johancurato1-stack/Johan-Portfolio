@@ -27,7 +27,7 @@ export default function ContactInfo() {
           </p>
         </div>
 
-        <h2 className="max-w-lg text-3xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-4xl lg:text-5xl">
+        <h2 className="max-w-lg text-3xl leading-[1.12] font-medium tracking-tight text-[#B9BEC7] sm:text-4xl lg:text-5xl">
           Let&apos;s work
           <span className="block text-[#F5F5F6]">together.</span>
         </h2>
@@ -54,7 +54,7 @@ export default function ContactInfo() {
                 {detail.label}
               </p>
 
-              <p className="mt-1 text-sm text-[#B9BEC7]">{detail.value}</p>
+              <p className="mt-1 text-sm text-[#F5F5F6]">{detail.value}</p>
             </div>
           </div>
         ))}

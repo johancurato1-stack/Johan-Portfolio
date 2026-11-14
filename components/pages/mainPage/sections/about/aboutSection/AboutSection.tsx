@@ -57,7 +57,7 @@ export default function AboutSection() {
 
           <h2
             ref={headingRef}
-            className="max-w-2xl text-4xl leading-[1.12] font-medium tracking-tight text-[#858991] sm:text-5xl lg:text-6xl"
+            className="max-w-2xl text-4xl leading-[1.12] font-medium tracking-tight text-[#B9BEC7] sm:text-5xl lg:text-6xl"
           >
             Turning <span className="text-[#F5F5F6]">Ideas</span>
             <span className="block">
@@ -114,7 +114,7 @@ export default function AboutSection() {
               className="overflow-hidden rounded-lg"
             >
               <Image
-                src="/images/about/aboutSection/About%20Picture.png"
+                src="/images/mainPage/sections/about/aboutSection/About%20Picture.png"
                 alt="Johan Curato playing guitar"
                 width={544}
                 height={756}
