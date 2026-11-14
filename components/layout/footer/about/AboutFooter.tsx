@@ -5,8 +5,10 @@
 ============================================================================*/
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 import useScrollAnimation from "@/components/hooks/useScrollAnimation";
+import { saveCurrentLocation } from "@/lib/navigation/navigationHistory";
 
 //============================================================================
 //! FOOTER DATA
@@ -49,6 +51,8 @@ const rightsLinks = [
 //============================================================================
 
 export default function AboutFooter() {
+  const router = useRouter();
+
   const contentRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -69,6 +73,15 @@ export default function AboutFooter() {
         detail: sectionId,
       }),
     );
+  };
+
+  //============================================================================
+  //! LEGAL PAGE NAVIGATION
+  //============================================================================
+
+  const handleLegalNavigation = (href: string) => {
+    saveCurrentLocation();
+    router.push(href);
   };
 
   //============================================================================
@@ -165,6 +178,10 @@ export default function AboutFooter() {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleLegalNavigation(link.href);
+                    }}
                     className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#F5F5F6]"
                   >
                     {link.label}

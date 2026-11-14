@@ -9,10 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@upstash/redis": "^1.41.0",
     "@xyflow/react": "^12.12.1",
     "next": "16.4.3",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "resend": "^6.38.1"
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",

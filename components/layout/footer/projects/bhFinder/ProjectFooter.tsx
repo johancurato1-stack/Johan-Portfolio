@@ -4,10 +4,11 @@
  //! IMPORTS
 ============================================================================*/
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
 import useScrollAnimation from "@/components/hooks/useScrollAnimation";
+import { saveCurrentLocation } from "@/lib/navigation/navigationHistory";
 
 //============================================================================
 //! FOOTER DATA
@@ -38,6 +39,8 @@ const rightsLinks = [
 //============================================================================
 
 export default function ProjectFooter() {
+  const router = useRouter();
+
   const contentRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -58,6 +61,15 @@ export default function ProjectFooter() {
         detail: sectionId,
       }),
     );
+  };
+
+  //============================================================================
+  //! LEGAL PAGE NAVIGATION
+  //============================================================================
+
+  const handleLegalNavigation = (href: string) => {
+    saveCurrentLocation();
+    router.push(href);
   };
 
   //============================================================================
@@ -154,6 +166,10 @@ export default function ProjectFooter() {
                 <li key={link.label}>
                   <a
                     href={link.href}
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleLegalNavigation(link.href);
+                    }}
                     className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#E0E2E6]"
                   >
                     {link.label}

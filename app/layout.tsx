@@ -3,6 +3,7 @@ import { Inter, Geist_Mono } from "next/font/google";
 
 import "../styles/globals.css";
 import Preloader from "@/components/layout/Preloader";
+import NavigationRestoration from "@/components/layout/navigation/NavigationRestoration";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -71,6 +72,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
       <body className="min-h-full flex flex-col">
         <Preloader />
+        <NavigationRestoration />
         {children}
       </body>
     </html>

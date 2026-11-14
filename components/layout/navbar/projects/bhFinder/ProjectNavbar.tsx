@@ -8,6 +8,8 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
+import { preparePreviousLocation } from "@/lib/navigation/navigationHistory";
+
 //============================================================================
 //! NAVIGATION LINKS
 //============================================================================
@@ -49,15 +51,6 @@ const sectionOffsets: Record<string, number> = {
 };
 
 //============================================================================
-//! NAVIGATION RETURN LOCATION
-//============================================================================
-
-interface ReturnLocation {
-  pathname: string;
-  scrollY: number;
-}
-
-//============================================================================
 //! NAVBAR
 //============================================================================
 
@@ -83,47 +76,16 @@ export default function ProjectNavbar() {
   //============================================================================
 
   const handleBackNavigation = useCallback(() => {
-    const savedLocation = sessionStorage.getItem("portfolio:return-location");
+    const previousLocation = preparePreviousLocation();
 
-    if (savedLocation) {
-      try {
-        const returnLocation = JSON.parse(savedLocation) as ReturnLocation;
-
-        const isValidPath =
-          typeof returnLocation.pathname === "string" &&
-          returnLocation.pathname.startsWith("/") &&
-          !returnLocation.pathname.startsWith("//") &&
-          !returnLocation.pathname.startsWith("/projects/bh-finder");
-
-        const isValidScrollPosition =
-          typeof returnLocation.scrollY === "number" &&
-          Number.isFinite(returnLocation.scrollY) &&
-          returnLocation.scrollY >= 0;
-
-        if (isValidPath && isValidScrollPosition) {
-          sessionStorage.removeItem("portfolio:return-location");
-
-          sessionStorage.setItem(
-            "portfolio:pending-scroll",
-            String(returnLocation.scrollY),
-          );
-
-          sessionStorage.removeItem("portfolio:pending-navigation");
-
-          router.push(returnLocation.pathname);
-          return;
-        }
-      } catch {
-        sessionStorage.removeItem("portfolio:return-location");
-      }
+    if (previousLocation) {
+      router.push(previousLocation.pathname);
+      return;
     }
 
     //============================================================================
     //! FALLBACK NAVIGATION
     //============================================================================
-
-    sessionStorage.removeItem("portfolio:return-location");
-    sessionStorage.removeItem("portfolio:pending-scroll");
 
     sessionStorage.setItem("portfolio:pending-navigation", "projects");
 
@@ -285,7 +247,10 @@ export default function ProjectNavbar() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 bg-transparent">
+      <header
+        style={{ viewTransitionName: "portfolio-navbar" }}
+        className="fixed inset-x-0 top-0 z-50 bg-transparent"
+      >
         {/*==================================================================
           //! NAVBAR GRADIENT
         ==================================================================*/}
@@ -322,7 +287,7 @@ export default function ProjectNavbar() {
 
           {/*==================================================================
             //! NAVIGATION AND BACK BUTTON
-          ==================================================================*/}
+          ================================================================*/}
 
           <div className="ml-auto flex items-center gap-6 lg:gap-10">
             {/*================================================================

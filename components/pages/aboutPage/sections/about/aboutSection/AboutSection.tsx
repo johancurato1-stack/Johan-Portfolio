@@ -6,6 +6,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 import Button from "@/components/ui/MainButton";
 import useScrollAnimation from "@/components/hooks/useScrollAnimation";
@@ -15,6 +16,8 @@ import useScrollAnimation from "@/components/hooks/useScrollAnimation";
 //============================================================================
 
 export default function AboutSection() {
+  const router = useRouter();
+
   const labelRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLDivElement>(null);
@@ -32,6 +35,28 @@ export default function AboutSection() {
   useScrollAnimation(buttonsRef, 400);
   useScrollAnimation(portraitRef, 180, 150);
   useScrollAnimation(detailsRef, 250, 120);
+
+  //============================================================================
+  //! STORY NAVIGATION HANDLER
+  //============================================================================
+
+  const handleStoryNavigation = () => {
+    window.dispatchEvent(
+      new CustomEvent("portfolio:about-navigate", {
+        detail: "my-story",
+      }),
+    );
+  };
+
+  //============================================================================
+  //! EXPLORE PROJECTS NAVIGATION
+  //============================================================================
+
+  const handleExploreProjects = () => {
+    sessionStorage.setItem("portfolio:pending-navigation", "projects");
+
+    router.push("/");
+  };
 
   return (
     <section
@@ -88,11 +113,15 @@ export default function AboutSection() {
             ================================================================*/}
 
             <div ref={buttonsRef} className="mt-8 flex flex-wrap gap-3">
-              <Button href="#my-story" variant="primary">
+              <Button variant="primary" onClick={handleStoryNavigation}>
                 Get to Know Me
               </Button>
 
-              <Button href="/#projects" variant="secondary">
+              <Button
+                href="/"
+                variant="secondary"
+                onClick={handleExploreProjects}
+              >
                 View My Projects
               </Button>
             </div>

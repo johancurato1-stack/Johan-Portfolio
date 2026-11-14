@@ -5,8 +5,10 @@
 ============================================================================*/
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
 import useScrollAnimation from "@/components/hooks/useScrollAnimation";
+import { saveCurrentLocation } from "@/lib/navigation/navigationHistory";
 
 //============================================================================
 //! FOOTER DATA
@@ -49,6 +51,8 @@ const rightsLinks = [
 //============================================================================
 
 export default function Footer() {
+  const router = useRouter();
+
   const contentRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -69,6 +73,15 @@ export default function Footer() {
         detail: sectionId,
       }),
     );
+  };
+
+  //============================================================================
+  //! LEGAL PAGE NAVIGATION
+  //============================================================================
+
+  const handleLegalNavigation = (href: string) => {
+    saveCurrentLocation();
+    router.push(href);
   };
 
   return (
@@ -134,7 +147,7 @@ export default function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#E0E2E6]"
+                    className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#F5F5F6]"
                   >
                     {link.label}
                   </a>
@@ -157,7 +170,11 @@ export default function Footer() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#E0E2E6]"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleLegalNavigation(link.href);
+                    }}
+                    className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#F5F5F6]"
                   >
                     {link.label}
                   </a>
@@ -183,7 +200,7 @@ export default function Footer() {
                     event.preventDefault();
                     handleNavigation("contact");
                   }}
-                  className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#E0E2E6]"
+                  className="text-xs text-[#858991] transition-colors duration-300 hover:text-[#F5F5F6]"
                 >
                   Email
                 </a>

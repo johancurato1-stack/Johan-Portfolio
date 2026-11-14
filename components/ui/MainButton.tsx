@@ -19,6 +19,7 @@ interface ButtonProps {
   className?: string;
   type?: "button" | "submit";
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 //============================================================================
@@ -33,6 +34,7 @@ export default function Button({
   className = "",
   type = "button",
   onClick,
+  disabled = false,
 }: ButtonProps) {
   const baseStyles =
     "inline-flex cursor-pointer items-center gap-3 rounded-md px-5 py-3 text-xs font-medium transition-colors duration-300";
@@ -51,7 +53,12 @@ export default function Button({
 
   if (!href) {
     return (
-      <button type={type} onClick={onClick} className={combinedStyles}>
+      <button
+        type={type}
+        onClick={onClick}
+        disabled={disabled}
+        className={`${combinedStyles} disabled:cursor-not-allowed disabled:opacity-60`}
+      >
         {children}
       </button>
     );

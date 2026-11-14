@@ -8,6 +8,8 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
+import { saveCurrentLocation } from "@/lib/navigation/navigationHistory";
+
 //============================================================================
 //! NAVIGATION LINKS
 //============================================================================
@@ -84,21 +86,6 @@ export default function Navbar() {
 
     window.scrollTo({
       top: Math.max(0, targetPosition),
-      behavior: "smooth",
-    });
-  }, []);
-
-  //============================================================================
-  //! PENDING SCROLL RESTORATION HANDLER
-  //============================================================================
-
-  const handlePendingScroll = useCallback((scrollPosition: number) => {
-    if (!Number.isFinite(scrollPosition) || scrollPosition < 0) return;
-
-    isNavigating.current = true;
-
-    window.scrollTo({
-      top: scrollPosition,
       behavior: "smooth",
     });
   }, []);
@@ -187,49 +174,28 @@ export default function Navbar() {
       if (destination.origin !== window.location.origin) return;
 
       const isProjectEntry = destination.pathname === "/projects/bh-finder";
-
       const isAboutEntry = destination.pathname === "/about";
 
       if (!isProjectEntry && !isAboutEntry) return;
 
-      sessionStorage.setItem(
-        "portfolio:return-location",
-        JSON.stringify({
-          pathname: `${window.location.pathname}${window.location.search}${window.location.hash}`,
-          scrollY: window.scrollY,
-        }),
-      );
+      saveCurrentLocation();
     };
 
     //============================================================================
-    //! HANDLE PENDING NAVIGATION
+    //! HANDLE PENDING SECTION NAVIGATION
     //============================================================================
 
     if (pathname === "/") {
-      const pendingScroll = sessionStorage.getItem("portfolio:pending-scroll");
-
       const pendingSection = sessionStorage.getItem(
         "portfolio:pending-navigation",
       );
 
-      if (pendingScroll !== null || pendingSection !== null) {
+      if (pendingSection) {
         firstFrame = requestAnimationFrame(() => {
           secondFrame = requestAnimationFrame(() => {
-            const latestPendingScroll = sessionStorage.getItem(
-              "portfolio:pending-scroll",
-            );
-
             const latestPendingSection = sessionStorage.getItem(
               "portfolio:pending-navigation",
             );
-
-            if (latestPendingScroll !== null) {
-              sessionStorage.removeItem("portfolio:pending-scroll");
-              sessionStorage.removeItem("portfolio:pending-navigation");
-
-              handlePendingScroll(Number(latestPendingScroll));
-              return;
-            }
 
             if (latestPendingSection) {
               sessionStorage.removeItem("portfolio:pending-navigation");
@@ -279,7 +245,6 @@ export default function Navbar() {
     pathname,
     handleNavigation,
     handlePendingNavigation,
-    handlePendingScroll,
     updateActiveSection,
   ]);
 
