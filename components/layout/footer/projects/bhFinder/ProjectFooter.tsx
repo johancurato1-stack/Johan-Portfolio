@@ -25,7 +25,7 @@ const discoverLinks = [
 const projectLinks = [
   {
     label: "GitHub",
-    href: "https://github.com/johancurato1-stack",
+    href: "https://github.com/johancurato1-stack/BH-Finder-First-Project-",
   },
 ];
 
@@ -224,7 +224,7 @@ export default function ProjectFooter() {
           ==================================================================*/}
 
           <p className="text-xs text-[#858991]">
-            © 2026 Johan Curato. All rights reserved.
+            © 2026 Johan Garcia. All rights reserved.
           </p>
 
           {/*==================================================================

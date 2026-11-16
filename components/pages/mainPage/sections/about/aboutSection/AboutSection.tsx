@@ -74,7 +74,7 @@ export default function AboutSection() {
             className="mt-6 max-w-lg space-y-5 text-sm leading-7 text-[#858991] sm:text-base"
           >
             <p data-scroll-animation-item>
-              I&apos;m Johan Curato, a developer based in the Philippines,
+              I&apos;m Johan Garcia, a developer based in the Philippines,
               currently pursuing a BS Computer Science degree at Caraga State
               University. I enjoy building practical applications, intuitive
               interfaces, and reliable data-driven solutions.

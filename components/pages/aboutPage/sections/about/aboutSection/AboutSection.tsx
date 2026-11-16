@@ -99,7 +99,7 @@ export default function AboutSection() {
               className="mt-6 max-w-lg space-y-5 text-sm leading-7 text-[#858991] sm:text-base"
             >
               <p data-scroll-animation-item>
-                I&apos;m Johan Curato, a Computer Science student and aspiring
+                I&apos;m Johan Garcia, a Computer Science student and aspiring
                 developer from the Philippines. I enjoy exploring ideas,
                 learning new things, and turning curiosity into something
                 meaningful. Beyond building digital experiences, I&apos;m
@@ -186,7 +186,7 @@ export default function AboutSection() {
                   ASPIRATION
                 </p>
                 <p className="mt-2 text-sm font-medium text-[#F5F5F6]">
-                  Software Developer
+                  Software Engineer
                 </p>
               </div>
 

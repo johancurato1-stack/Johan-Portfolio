@@ -38,7 +38,7 @@ export const socialLinks = [
     id: "linkedin",
     icon: "linkedin",
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/johan-curato-696a80361/",
+    href: "https://www.linkedin.com/in/johan-garcia-696a80361/",
   },
   {
     id: "facebook",

@@ -15,7 +15,7 @@ export const faqData: FAQItem[] = [
   {
     question: "Who am I beyond being a developer?",
     answer:
-      "Beyond development, I'm someone who enjoys music, fitness, gaming, and continuously learning new things. I value personal growth, meaningful connections, and finding balance between my ambitions and the things I enjoy.",
+      "Beyond development, I'm someone who enjoys music, fitness, gaming, writing, and continuously learning new things. I value personal growth, meaningful connections, and finding balance between my ambitions and the things I enjoy.",
   },
   {
     question: "What inspired me to pursue Computer Science?",
@@ -25,7 +25,7 @@ export const faqData: FAQItem[] = [
   {
     question: "What do I enjoy doing in my free time?",
     answer:
-      "I enjoy singing and exploring music, staying active through fitness, playing games, and learning about things that interest me. These activities help me stay creative, motivated, and balanced.",
+      "I enjoy writing and exploring music, staying active through fitness, playing games, and learning about things that interest me. These activities help me stay creative, motivated, and balanced.",
   },
   {
     question: "What keeps me motivated when things get difficult?",

@@ -47,7 +47,8 @@ export const scalabilityFutureData = [
   {
     id: "feature-expansion",
     title: "Feature Expansion",
-    description: "Add notifications, reviews, and ratings in future versions.",
+    description:
+      "Add notifications, reviews, ratings, and AI capabilities in future versions.",
     icon: "expansion",
   },
 ] as const;

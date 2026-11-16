@@ -29,7 +29,7 @@ const socialLinks = [
   },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/johan-curato-696a80361/",
+    href: "https://www.linkedin.com/in/johan-garcia-696a80361/",
   },
   {
     label: "Instagram",
@@ -222,7 +222,7 @@ export default function Footer() {
           ==================================================================*/}
 
           <p className="text-xs text-[#858991]">
-            © 2026 Johan Curato. All rights reserved.
+            © 2026 Johan Garcia. All rights reserved.
           </p>
 
           {/*==================================================================

@@ -154,7 +154,7 @@ export default function ConclusionSection() {
               className="mt-9 flex flex-wrap items-center gap-3"
             >
               <Button
-                href="https://github.com/johancurato1-stack"
+                href="https://github.com/johancurato1-stack/BH-Finder-First-Project-"
                 variant="primary"
                 external
               >

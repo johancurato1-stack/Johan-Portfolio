@@ -84,7 +84,7 @@ export default function PrivacyPolicyPage() {
               </h3>
 
               <p className="text-sm leading-7 text-[#858991]">
-                Welcome to the portfolio website of Johan Curato (&quot;I,&quot;
+                Welcome to the portfolio website of Johan Garcia (&quot;I,&quot;
                 &quot;me,&quot; or &quot;my&quot;). Your privacy is important to
                 me, and this Privacy Policy explains how information is handled
                 when you visit this website or use its contact form.
@@ -380,7 +380,7 @@ export default function PrivacyPolicyPage() {
                 <div className="grid grid-cols-[100px_1fr] gap-x-4 gap-y-4 text-sm sm:grid-cols-[120px_1fr]">
                   <span className="text-[#858991]">Developer:</span>
                   <span className="font-medium text-[#F5F5F6]">
-                    Johan Curato
+                    Johan Garcia
                   </span>
 
                   <span className="text-[#858991]">Email:</span>
@@ -400,7 +400,7 @@ export default function PrivacyPolicyPage() {
           <div className="mt-16 h-px w-full bg-[#41444B]/70" />
 
           <p className="mt-6 text-xs text-[#858991]">
-            © 2026 Johan Curato. All rights reserved.
+            © 2026 Johan Garcia. All rights reserved.
           </p>
         </main>
       </div>

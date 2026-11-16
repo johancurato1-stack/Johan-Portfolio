@@ -5,7 +5,7 @@
 ============================================================================*/
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Button from "@/components/ui/MainButton";
 import useScrollAnimation from "@/components/hooks/useScrollAnimation";
@@ -21,6 +21,12 @@ export default function HeroSection() {
   const buttonsRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
 
+  const phrases = ["HELLO, I'M JOHAN GARCIA", "ASPIRING SOFTWARE ENGINEER"];
+
+  const [displayedText, setDisplayedText] = useState("");
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
   //============================================================================
   //! SCROLL ANIMATIONS
   //============================================================================
@@ -30,6 +36,43 @@ export default function HeroSection() {
   useScrollAnimation(descriptionRef, 350);
   useScrollAnimation(buttonsRef, 450);
   useScrollAnimation(profileRef, 200);
+
+  //============================================================================
+  //! TYPEWRITER ANIMATION
+  //============================================================================
+
+  useEffect(() => {
+    const currentPhrase = phrases[phraseIndex];
+    let timeout: ReturnType<typeof setTimeout>;
+
+    if (!isDeleting && displayedText === currentPhrase) {
+      timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, 1800);
+    } else if (isDeleting && displayedText === "") {
+      timeout = setTimeout(() => {
+        setIsDeleting(false);
+        setPhraseIndex((previous) => (previous + 1) % phrases.length);
+      }, 400);
+    } else {
+      timeout = setTimeout(
+        () => {
+          setDisplayedText((previous) =>
+            isDeleting
+              ? previous.slice(0, -1)
+              : currentPhrase.slice(0, previous.length + 1),
+          );
+        },
+        isDeleting ? 40 : 85,
+      );
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, phraseIndex]);
+
+  //============================================================================
+  //! RENDER
+  //============================================================================
 
   return (
     <section id="home" className="relative overflow-hidden">
@@ -42,8 +85,15 @@ export default function HeroSection() {
           <div ref={introductionRef} className="mb-7 flex items-center gap-3">
             <span className="h-2 w-2 rounded-full border border-[#B9BEC7]" />
 
-            <p className="text-[10px] font-medium tracking-[0.2em] text-[#858991]">
-              HELLO, I&apos;M JOHAN CURATO
+            <p
+              aria-label={phrases[phraseIndex]}
+              className="text-[10px] font-medium tracking-[0.2em] text-[#858991]"
+            >
+              <span aria-hidden="true">{displayedText}</span>
+              <span
+                aria-hidden="true"
+                className="ml-0.5 inline-block h-[10px] w-px translate-y-[1px] animate-pulse bg-[#B9BEC7]"
+              />
             </p>
           </div>
 

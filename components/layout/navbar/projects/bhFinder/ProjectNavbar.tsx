@@ -316,7 +316,7 @@ export default function ProjectNavbar() {
                     {link.label}
 
                     <span
-                      className={`absolute inset-x-0 bottom-1 h-[2px] origin-center bg-[#E0E2E6] transition-transform duration-300 ease-in-out ${
+                      className={`absolute inset-x-0 bottom-0 h-[3px] rounded-full origin-center bg-[#E0E2E6] transition-transform duration-300 ease-in-out ${
                         isActive ? "scale-x-100" : "scale-x-0"
                       }`}
                     />

@@ -125,7 +125,7 @@ export default function TermsOfServicePage() {
               <p className="text-sm leading-7 text-[#858991]">
                 Unless otherwise stated, the original content on this website,
                 including its design, text, graphics, images, and portfolio
-                materials, belongs to Johan Curato or is used with appropriate
+                materials, belongs to Johan Garcia or is used with appropriate
                 permission.
               </p>
 
@@ -392,7 +392,7 @@ export default function TermsOfServicePage() {
                 <div className="grid grid-cols-[100px_1fr] gap-x-4 gap-y-4 text-sm sm:grid-cols-[120px_1fr]">
                   <span className="text-[#858991]">Developer:</span>
                   <span className="font-medium text-[#F5F5F6]">
-                    Johan Curato
+                    Johan Garcia
                   </span>
 
                   <span className="text-[#858991]">Email:</span>
@@ -412,7 +412,7 @@ export default function TermsOfServicePage() {
           <div className="mt-16 h-px w-full bg-[#41444B]/70" />
 
           <p className="mt-6 text-xs text-[#858991]">
-            © 2026 Johan Curato. All rights reserved.
+            © 2026 Johan Garcia. All rights reserved.
           </p>
         </main>
       </div>
