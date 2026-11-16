@@ -120,7 +120,7 @@ export default function IntroSection() {
               className="absolute right-[4%] top-[9%] z-0 h-[84%] w-[51%]"
             >
               <Image
-                src="/images/projectsPage/bhFinder/sections/overview/introSection/BH%20Finder%20Mobile%20App%20Mockup%203.png"
+                src="/images/projectsPage/bhFinder/sections/overview/IntroSection/BH%20Finder%20Mobile%20App%20Mockup%203.png"
                 alt="BH Finder boarding house details displayed on a white iPhone"
                 fill
                 priority
@@ -138,7 +138,7 @@ export default function IntroSection() {
               className="absolute left-[5%] top-0 z-10 h-full w-[62%]"
             >
               <Image
-                src="/images/projectsPage/bhFinder/sections/overview/introSection/BH%20Finder%20Mobile%20App%20Mockup%202.png"
+                src="/images/projectsPage/bhFinder/sections/overview/IntroSection/BH%20Finder%20Mobile%20App%20Mockup%202.png"
                 alt="BH Finder home screen displayed on a black iPhone"
                 fill
                 priority
