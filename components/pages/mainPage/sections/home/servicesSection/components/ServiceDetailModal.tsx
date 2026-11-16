@@ -230,17 +230,12 @@ export default function ServiceDetailModal({
               <ServiceIcon type={service} />
             </IconContainer>
 
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full border border-[#B9BEC7]" />
-
-                <p className="text-[9px] font-medium tracking-[0.2em] text-[#858991]">
-                  SERVICE DETAILS
-                </p>
-              </div>
-
-              <p className="mt-1 text-xs font-medium text-[#B9BEC7]">{title}</p>
-            </div>
+            <p
+              id="service-modal-title"
+              className="text-xs font-medium text-[#B9BEC7]"
+            >
+              {title}
+            </p>
           </div>
 
           <button
@@ -283,10 +278,7 @@ export default function ServiceDetailModal({
                 </p>
               </div>
 
-              <h2
-                id="service-modal-title"
-                className="max-w-lg text-2xl font-medium tracking-tight text-[#F5F5F6] sm:text-3xl"
-              >
+              <h2 className="max-w-lg text-2xl font-medium tracking-tight text-[#F5F5F6] sm:text-3xl">
                 {service === "mobile" && (
                   <>
                     Mobile experiences built with{" "}
