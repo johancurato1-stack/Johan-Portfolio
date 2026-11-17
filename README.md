@@ -2,7 +2,7 @@
 
 A personal developer portfolio built to showcase my projects, technical skills, and journey as a developer.
 
-**Live Website:** [johan-portfolio-delta.vercel.app](https://johan-portfolio-delta.vercel.app/)
+**Live Website:** [johangarcia.dev](https://johan-portfolio-delta.vercel.app/)
 
 ## Overview
 
@@ -77,14 +77,14 @@ The portfolio is deployed using Vercel.
 
 Visit the live website:
 
-[https://johan-portfolio-delta.vercel.app/](https://johan-portfolio-delta.vercel.app/)
+[johangarcia.dev](https://johan-portfolio-delta.vercel.app/)
 
 ## Author
 
 **Johan Garcia**
 
 - GitHub: [@johancurato1-stack](https://github.com/johancurato1-stack)
-- Portfolio: [johan-portfolio-delta.vercel.app](https://johan-portfolio-delta.vercel.app/)
+- Portfolio: [johangarcia.dev](https://johan-portfolio-delta.vercel.app/)
 
 ---
 
