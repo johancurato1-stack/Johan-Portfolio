@@ -26,7 +26,7 @@ export const introProjectMetadata = [
   },
   {
     label: "STATUS",
-    value: "In Development",
+    value: "On Hiatus",
     icon: "layers",
   },
 ] as const;
