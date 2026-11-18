@@ -20,9 +20,9 @@ const geistMono = Geist_Mono({
 //============================================================================
 
 export const metadata: Metadata = {
-  title: "Johan Curato | Full-Stack Developer",
+  title: "Johan Garcia",
   description:
-    "Johan Curato's developer portfolio, showcasing projects, technical skills, and experience building useful digital products.",
+    "Johan Garcia's developer portfolio, showcasing projects, technical skills, and experience building useful digital products.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

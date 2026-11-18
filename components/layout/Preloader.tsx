@@ -191,7 +191,7 @@ export default function Preloader() {
         >
           <Image
             src="/images/others/Main%20Logo.png"
-            alt="Johan Curato"
+            alt="Johan Garcia logo"
             width={180}
             height={180}
             priority

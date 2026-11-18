@@ -138,7 +138,7 @@ export default function AboutSection() {
             >
               <Image
                 src="/images/aboutPage/sections/about/aboutSection/About%20Picture%202.png"
-                alt="Portrait of Johan Curato"
+                alt="Portrait of Johan Garcia"
                 fill
                 priority
                 sizes="(max-width: 1024px) 340px, 30vw"

@@ -10,9 +10,9 @@ import LegalNavbar from "@/components/layout/navbar/legal/LegalNavbar";
 //============================================================================
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Johan Curato",
+  title: "Terms of Service",
   description:
-    "Read the terms and conditions governing the use of Johan Curato's portfolio website.",
+    "Read the terms and conditions governing the use of Johan Garcia's portfolio website.",
 };
 
 //============================================================================

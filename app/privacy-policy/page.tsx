@@ -10,9 +10,9 @@ import LegalNavbar from "@/components/layout/navbar/legal/LegalNavbar";
 //============================================================================
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Johan Curato",
+  title: "Privacy Policy",
   description:
-    "Learn how Johan Curato's portfolio handles personal information and protects visitor privacy.",
+    "Learn how Johan Garcia's portfolio handles personal information and protects visitor privacy.",
 };
 
 //============================================================================

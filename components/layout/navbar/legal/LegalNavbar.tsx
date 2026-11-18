@@ -64,7 +64,7 @@ export default function LegalNavbar() {
           <a
             id="navbar-logo"
             href="/"
-            aria-label="Johan Curato - Home"
+            aria-label="Johan Garcia - Home"
             onClick={(event) => {
               event.preventDefault();
               handleHomeNavigation();
@@ -73,7 +73,7 @@ export default function LegalNavbar() {
           >
             <Image
               src="/images/others/Main%20Logo.png"
-              alt="Johan Curato logo"
+              alt="Johan Garcia logo"
               width={120}
               height={120}
               priority

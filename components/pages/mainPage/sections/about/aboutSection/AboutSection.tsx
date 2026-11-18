@@ -115,7 +115,7 @@ export default function AboutSection() {
             >
               <Image
                 src="/images/mainPage/sections/about/aboutSection/About%20Picture.png"
-                alt="Johan Curato playing guitar"
+                alt="Johan Garcia playing guitar"
                 width={544}
                 height={756}
                 className="h-auto w-full object-cover"

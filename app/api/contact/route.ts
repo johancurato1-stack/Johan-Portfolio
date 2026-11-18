@@ -10,7 +10,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const redis = Redis.fromEnv();
 
 const recipientEmail = "johancurato1@gmail.com";
-const senderEmail = "Johan Curato Portfolio <onboarding@resend.dev>";
+const senderEmail = "Johan Garcia Portfolio <onboarding@resend.dev>";
 
 const COOLDOWN_SECONDS = 30 * 60;
 const PENDING_SECONDS = 120;

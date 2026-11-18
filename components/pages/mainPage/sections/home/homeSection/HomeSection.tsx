@@ -154,7 +154,7 @@ export default function HeroSection() {
         >
           <Image
             src="/images/mainPage/sections/home/homeSection/Hero%20Profile.png"
-            alt="Portrait of Johan Curato"
+            alt="Portrait of Garcia"
             width={1000}
             height={1200}
             priority
