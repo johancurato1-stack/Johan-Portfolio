@@ -64,7 +64,7 @@ export const challengesData = [
     solution: {
       title: "Shared chat architecture implementation",
       description:
-        "Developed a shared chat architecture with dedicated Chat and Inquiry repositories. Introduced access states, pending-user tracking, acceptance and blocking operations, cooldown handling, and inquiry snapshots to preserve the original room and property details. (In Development)",
+        "Developed a shared chat architecture with dedicated Chat and Inquiry repositories. Introduced access states, pending-user tracking, acceptance and blocking operations, cooldown handling, and inquiry snapshots to preserve the original room and property details. (On Hiatus)",
       icon: "check",
     },
     status: "in-development",
